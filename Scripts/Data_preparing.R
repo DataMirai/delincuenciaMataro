@@ -15,7 +15,7 @@ read_excel_allsheets <- function(filename, tibble = FALSE) {
 }
 
 policia <- read_excel_allsheets("Data/REF_21900.xls")
-noms<- c("barri","sexe","edat","categoria","tipus","var1","var2","Año")
+noms<- c("barri","sexe","edat","categoria","tipus","var1","var2","Any")
 
 #Data frame final
 policia <- policia %>% 
@@ -25,5 +25,6 @@ policia <- policia %>%
   as.tibble(.) %>%
   select(-c(var1,var2)) %>%
   mutate_if(is.character, as.factor )
+
 
 rm(noms, read_excel_allsheets )
