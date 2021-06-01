@@ -1,7 +1,7 @@
 # preparacion de librerias ----
 
 if(!require("pacman")){install.packages("pacman")}
-pacman::p_load("tidyverse","readxl", "data.table")
+pacman::p_load("tidyverse","readxl", "data.table","RColorBrewer","viridis")
 
 
 # Preparacion de datos --------------------------------------------------------
@@ -24,7 +24,9 @@ policia <- policia %>%
   rbindlist(.) %>%
   as.tibble(.) %>%
   select(-c(var1,var2)) %>%
-  mutate_if(is.character, as.factor )
+  mutate_if(is.character, as.factor ) %>%
+  filter(Any!=2015)
+  
 
 
 rm(noms, read_excel_allsheets )
