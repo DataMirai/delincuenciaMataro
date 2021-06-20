@@ -1,13 +1,7 @@
 source("Scripts/Data_preparing.R")
 
-
-#trasngresionees a la propiedad -> hurto + robo, estafa,  destruccion ...
-#trasngresionees a la persona  -> transgresiones psicologicos / transgresiones a la integridad física 
-#Ofensas contra la comunidad / seguridad ciudadana: conducir sin licencia, incumplimiento de condena judiciial,Atemptat a  agents de l' autoritat,Danys,Conduir sota els efectes d'alcohol)
-
 tipos_delitos <- as.character(unique(policia$tipus))
 
-tipos_delitos
 # PROPIEDAD ----------------------------------------------------------------------------------------
 
 # propiedad_main ----
@@ -151,7 +145,7 @@ trangresiones_propiedad_privada<-c(
   "Intrusió en sistemes informàtics"
 )
 
-transgresiones_daños<-c(
+transgresiones_danos<-c(
   "Maltractament d'obra sense lesió (lleu)",
   "Robatori amb força",
   "Danys (lleu)",
@@ -349,12 +343,13 @@ transgresiones_menores<-c(
   "Ipf viol/intim. prosti/proxene.menors/discapacitat"
 )
 
-trangresiones_animales<- c(
+transgresiones_animales<- c(
   "Abandonament d'animals domèstics (lleu)",
   "Dleg 2/2008 protecció d'animals",
   "Deixar solts animals ferotges/abandonar domèstics",
   "Maltractament d'animal domèstic"
 )
+
 
 # COMUNIDAD ----------------------------------------------------------------------------------------
 
@@ -485,9 +480,14 @@ transgresiones_drogas<-c(
   "Consum compartit alcohol via pública/espai public"
 )
 
-trangresiones_comportamientos_disidentes<-c(
+transgresiones_drogas[1]
+as.character(policia$tipus[1])
+
+transgresiones_drogas[1] == as.character(policia$tipus[1])
+
+transgresiones_comportamientos_disidentes<-c(
   "Celebr.reunio/manif. infrac. lo 9/1983 comunicades",
-  "Reunió/manif. no comun/prohibida instal. bàsica",
+  "Reunió/manif. no comun/prohibida instal. bàRsica",
   "Trencament de condemna (resolució judicial)",
   "Conduir sota els efectes d'alcohol",
   "Falta respecte i consideració als membres fcs",
@@ -552,11 +552,4 @@ transgresiones_altres<- c(
   "No es detecta infracció",
   "Risc provocats per altres agents"
 
-)
-
-# CATEGORIAS  --------------------------------------------------------------------------------------
-
-policia_particion_categoria <- list(
-  policia %>% filter(categoria=="FALTES ADMINISTRATIVES" ),
-  policia %>% filter(categoria=="DELICTES")
 )

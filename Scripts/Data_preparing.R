@@ -25,8 +25,7 @@ policia <- policia %>%
   rbindlist(.) %>%
   as.tibble(.) %>%
   select(-c(var1,var2)) %>%
-  filter(Any!=2015) %>%
-  mutate_if(is.character, as.factor )
+  filter(Any!=2015)
   
 # Limpieza de variables auxiliares ---------------------------------------------
 rm(noms, read_excel_allsheets )
