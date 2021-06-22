@@ -6,6 +6,7 @@ tipos_delitos <- as.character(unique(policia$tipus))
 
 # propiedad_main ----
 transgresiones_patrimonio<- c(
+  "Furt",
   "Furt (lleu)",
   "Ocupació immobles (lleu)",
   "Receptació i altres conductes afins",
@@ -16,6 +17,7 @@ transgresiones_patrimonio<- c(
   "Apropiació indeguda (lleu)",
   "Entrada a vivenda aliena",
   "Danys (lleu)",
+  "Danys",
   "Apropiació indeguda",
   "Altres estafes",
   "Robatori amb força",
@@ -58,7 +60,8 @@ transgresiones_patrimonio<- c(
   "Llei de marina mercant",
   "Infracció venda",
   "Negligència custòdia documentació personal",
-  "Irregularitats en el registre del resguard"
+  "Irregularitats en el registre del resguard",
+  "Danys imprudents (lleu)"
   
 )
 
@@ -106,7 +109,8 @@ trangresiones_fiscales <- c(
   "Defraudacions",
   "Insolvències punibles",
   "Llei de marina mercant",
-  "Infracció venda"
+  "Infracció venda",
+  "Violació de domicili jurídic"
 )
 
 transgresiones_medioambiente<- c(
@@ -136,6 +140,7 @@ trangresiones_propiedad_privada<-c(
   "Entrada a vivenda aliena",
   "Ocupació immobles (lleu)",
   "Danys (lleu)",
+  "Danys",
   "Apropiació indeguda",
   "Robatori o furt d'ús de vehicle",
   "Apropiació indeguda de vehicle",
@@ -151,7 +156,8 @@ transgresiones_danos<-c(
   "Danys (lleu)",
   "Danys / deslluïments de béns mobles / immobles",
   "Incendi",
-  "Danys imprudents (lleu)"
+  "Danys imprudents (lleu)",
+  "Danys"
 )
 
 # PERSONA ------------------------------------------------------------------------------------------
@@ -171,6 +177,7 @@ transgresiones_integridad<-c(
   "Coaccions",
   "Abandonament temporal de menor",
   "Usurpació (lleu)",
+  "Usurpació",
   "Assetjament",
   "Agressió sexual amb penetració (menor de 16 anys)",
   "De la usurpació de l'estat civil",
@@ -216,7 +223,9 @@ transgresiones_integridad<-c(
   "Abandonament de menor d'edat o discapacitat",
   "Maltractament d'animal domèstic",
   "Ipf viol/intim. prosti/proxene.menors/discapacitat",
-  "Segrest"
+  "Segrest",
+  "Infracció llei 10/99 gossos perillosos",
+  "Contra exer. drets fonamentals i llib. públiques"
 )
 
 trangresiones_homicidos<-c(
@@ -279,6 +288,7 @@ transgresiones_libertad_intimidad_identidad<-c(
   "Amenaces (lleu)",
   "Amenaces",
   "Usurpació (lleu)",
+  "Usurpació",
   "De la usurpació de l'estat civil",
   "Coaccions (lleu)",
   "Descobriment i revelació de secrets",
@@ -347,7 +357,8 @@ transgresiones_animales<- c(
   "Abandonament d'animals domèstics (lleu)",
   "Dleg 2/2008 protecció d'animals",
   "Deixar solts animals ferotges/abandonar domèstics",
-  "Maltractament d'animal domèstic"
+  "Maltractament d'animal domèstic",
+  "Infracció llei 10/99 gossos perillosos"
 )
 
 
@@ -357,15 +368,18 @@ transgresiones_animales<- c(
 transgresiones_ofensas_comunidad<-c(
   "Consum o tinença drogues o abandonament estris",
   "Celebr.reunio/manif. infrac. lo 9/1983 comunicades",
+  "Celebr.reunio/manif.infr.lo 9/1983 no comunicades", #Tienen espacios distintos
   "Tinença/utilit.armes reg. excedint-se límits",
   "Tinença o utilització d'armes prohibides",
   "Cond. amb priv. judicial caut. o def. permís/llicè",
   "Conduir sense haver obtingut mai permís o llicèn.",
+  "Conduir sense permís per pèrdua de vig. per punts",
   "Infraccions a les ordenances municipals",
   "Contra la salut pública (tràfic drogues)",
   "Altres infraccions contra la 4/2015 (sense comís)",
   "Falta respecte i consideració als membres fcs",
   "Resistència, desobediència a agents de l'autoritat",
+  "Desobediència / resistència agents de l'autoritat",
   "Conduir sota els efectes d'alcohol",
   "Trencament de condemna (resolució judicial)",
   "Omissió comunicacions obligatòries pg-me",
@@ -423,7 +437,8 @@ transgresiones_ofensas_comunidad<-c(
   "Ipf viol/intim. prosti/proxene.menors/discapacitat",
   "Terrorisme",
   "Contra la salut pública (consum)",
-  "Velocitat penalment punible"
+  "Velocitat penalment punible",
+  "Consum compartit alcohol via pública/espai public"
 )
 
 # comunidad_sub ----
@@ -432,6 +447,7 @@ transgresiones_autoridad<- c(
   "Infraccions a les ordenances municipals",
   "Falta respecte i consideració als membres fcs",
   "Resistència, desobediència a agents de l'autoritat",
+  "Desobediència / resistència agents de l'autoritat",
   "Trencament de condemna (resolució judicial)",
   "Trencament de condemna (lleu)",
   "Omissió comunicacions obligatòries pg-me",
@@ -480,18 +496,16 @@ transgresiones_drogas<-c(
   "Consum compartit alcohol via pública/espai public"
 )
 
-transgresiones_drogas[1]
-as.character(policia$tipus[1])
-
-transgresiones_drogas[1] == as.character(policia$tipus[1])
 
 transgresiones_comportamientos_disidentes<-c(
+  "Celebr.reunio/manif.infr.lo 9/1983 no comunicades", #Tiene espacios que lo hacen diferente
   "Celebr.reunio/manif. infrac. lo 9/1983 comunicades",
   "Reunió/manif. no comun/prohibida instal. bàRsica",
   "Trencament de condemna (resolució judicial)",
   "Conduir sota els efectes d'alcohol",
   "Falta respecte i consideració als membres fcs",
   "Resistència, desobediència a agents de l'autoritat",
+  "Desobediència / resistència agents de l'autoritat",
   "Negativa a sotmetre's a les proves",
   "Atemptat a  agents de l' autoritat",
   "Simulació de delictes",
@@ -516,12 +530,14 @@ transgresiones_comportamientos_disidentes<-c(
   "Ipf viol/intim. prosti/proxene.menors/discapacitat",
   "Grups criminals",
   "Terrorisme",
-  "Velocitat penalment punible"
+  "Velocitat penalment punible",
+  "Reunió/manif. no comun/prohibida instal. bàsica"
 )
 
 trangresiones_seguridad_vial<- c(
   "Cond. amb priv. judicial caut. o def. permís/llicè",
   "Conduir sense haver obtingut mai permís o llicèn.",
+  "Conduir sense permís per pèrdua de vig. per punts",
   "Conduir sota els efectes d'alcohol",
   "Conduir sota els efectes d'alcohol i drogues",
   "Originar un greu risc per la circulació",
@@ -548,7 +564,6 @@ transgresiones_altres<- c(
   "Seguretat",
   "Altres irregularitats complimentació registres obl",
   "Altres infraccions relacionades amb medi ambient",
-
   "No es detecta infracció",
   "Risc provocats per altres agents"
 
