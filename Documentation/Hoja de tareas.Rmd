@@ -1,0 +1,16 @@
+---
+title: "Untitled"
+author: "Mireia Camacho"
+date: "24/06/2021"
+output: html_document
+---
+
+# Semana del 24 de Junio
+
+## prioridad 1
+
+1. Mireia: Completar grafcos de descriptiva basica por año, hay 2 hechos, faltan 4
+2. Aitor: Revisar documentacion para ver si la tendencia creciente por año es real o se podría considerar fruto del azar. (preguntar a Alejandra)
+
+## priodiad 2
+# Cambiar y arreglar formto a la pagina de scripts (arreglar nombres de seccion en codigo **MIREIA**)

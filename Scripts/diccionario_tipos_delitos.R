@@ -555,9 +555,6 @@ transgresiones_salud_publica<- c(
 # ALTRES ----
 transgresiones_altres<- c(
   "Altres infraccions contra la 4/2015 (sense comís)",
-  "Altres estafes",
-  "Altres estafes (lleu)",
-  "Altres falsificacions documentals",
   "Altres faltes administratives",
   "Documental",
   "Altres infraccions contra la 4/2015 (amb comís)",
@@ -566,5 +563,5 @@ transgresiones_altres<- c(
   "Altres infraccions relacionades amb medi ambient",
   "No es detecta infracció",
   "Risc provocats per altres agents"
-
 )
+
