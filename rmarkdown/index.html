@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Informe delitos</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Personal Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About Me</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Informe delitos</h1>
+
+</div>
+
+
+<div id="introducción" class="section level3">
+<h3>INTRODUCCIÓN</h3>
+<p>Este informe expone los datos de delincuencia en Mataró desde el año 2016 hasta el 2020 proporcionados por la Generalitat de Catalunya.</p>
+<p>El objetivo principal es exponer de forma clara para los ciudadanos la realidad de la situación que se está viviendo en Mataró ante la ola de inseguridad que acecha a la ciudad y las numerosas quejas de los vecinos.</p>
+<div id="indicaciones-para-el-lector" class="section level4">
+<h4>INDICACIONES PARA EL LECTOR</h4>
+<p>Según el interés del lector, los casos se pueden observar por años, por barrios y por tipo de delitos seleccionando las pestañas ‘Por años’, ’Por barrios’ y ‘Por tipo de delito’.</p>
+<p>Los tipos de delito han sido agrupados en categorías para hacer más ameno su entendimiento, pero se pueden ver todos los delitos que recoge la base de datos en la pestaña del anexo.</p>
+<p>Los gráficos que componen el informe son interactivos, por lo que se puede seleccionar y deseleccionar los elementos de la leyenda, así como hacer zoom en partes concretas de los gráficos. Para deshacer el zoom, basta con hacer doble click en el gráfico.</p>
+</div>
+</div>
+<div id="section" class="section level1 tabset tabset-pills">
+<h1></h1>
+<p>Escoge cómo quieres ver los datos:</p>
+<div id="por-años" class="section level2">
+<h2>POR AÑOS</h2>
+<p>En el número de delitos cometidos por años se observa un claro incremento desde 2017, destacándose 2020 como el año con más delitos registrados con diferencia, con 1.282 casos más que el año anterior.</p>
+<p>Aún así, si examinamos más de cerca los delitos registrados, cabe destacarse que hay un tipo de delito que es el causante de esta gran diferencia entre 2020 y el año anterior: &quot;Circular per la via publica excepte suposits rd 463/2020”. Esta ley es la que entró en vigor en marzo de 2020 para declarar el Estado de Alarma y la cuarentena, y en Mataró se pusieron 1.058 denuncias a personas por saltarse la cuarentena injustificadamente.</p>
+<p>Eliminando esta diferencia de casos, el resultado es que en 2020 hubo 224 casos más que en 2019, siguiendo con la tendencia en aumento que se produce desde 2017.</p>
+<div id="section-1" class="section level4 tabset tabset-pills">
+<h4></h4>
+<div id="totales" class="section level5">
+<h5>Totales</h5>
+<pre><code>## Inverted geom defaults of fill and color/colour.
+## To change them back, use invert_geom_defaults().</code></pre>
+<div id="htmlwidget-5b8061c2d8b851b13c04" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5b8061c2d8b851b13c04">{"x":{"data":[{"orientation":"v","width":0.9,"base":0,"x":[1],"y":[2383],"text":"Any: 2016<br />n: 2383<br />Any: 2016","type":"bar","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"2016","legendgroup":"2016","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[2],"y":[2241],"text":"Any: 2017<br />n: 2241<br />Any: 2017","type":"bar","marker":{"autocolorscale":false,"color":"rgba(163,165,0,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"2017","legendgroup":"2017","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[3],"y":[2309],"text":"Any: 2018<br />n: 2309<br />Any: 2018","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,191,125,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"2018","legendgroup":"2018","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[4],"y":[2477],"text":"Any: 2019<br />n: 2477<br />Any: 2019","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,176,246,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"2019","legendgroup":"2019","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[5],"y":[3759],"text":"Any: 2020<br />n: 3759<br />Any: 2020","type":"bar","marker":{"autocolorscale":false,"color":"rgba(231,107,243,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"2020","legendgroup":"2020","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":40.1826484018265,"l":48.9497716894977},"plot_bgcolor":"rgba(0,0,0,1)","paper_bgcolor":"rgba(0,0,0,1)","font":{"color":"rgba(255,255,255,1)","family":"","size":14.6118721461187},"title":{"text":"Delictes per any","font":{"color":"rgba(255,255,255,1)","family":"","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,5.6],"tickmode":"array","ticktext":["2016","2017","2018","2019","2020"],"tickvals":[1,2,3,4,5],"categoryorder":"array","categoryarray":["2016","2017","2018","2019","2020"],"nticks":null,"ticks":"outside","tickcolor":"rgba(204,204,204,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(178,178,178,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(20,20,20,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Any","font":{"color":"rgba(255,255,255,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-187.95,3946.95],"tickmode":"array","ticktext":["0","1000","2000","3000"],"tickvals":[0,1000,2000,3000],"categoryorder":"array","categoryarray":["0","1000","2000","3000"],"nticks":null,"ticks":"outside","tickcolor":"rgba(204,204,204,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(178,178,178,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(20,20,20,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Nº delictes","font":{"color":"rgba(255,255,255,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(204,204,204,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(0,0,0,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(255,255,255,1)","family":"","size":11.689497716895},"y":0.913385826771654},"annotations":[{"text":"Any","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"10a0c5c50e8bf":{"x":{},"y":{},"fill":{},"type":"bar"}},"cur_data":"10a0c5c50e8bf","visdat":{"10a0c5c50e8bf":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="sin-multas-confinamiento" class="section level5">
+<h5>Sin multas confinamiento</h5>
+<div id="htmlwidget-9b81035b35c7786c6956" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9b81035b35c7786c6956">{"x":{"data":[{"orientation":"v","width":0.9,"base":0,"x":[1],"y":[2373],"text":"Any: 2016<br />n: 2373<br />Any: 2016","type":"bar","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"2016","legendgroup":"2016","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[2],"y":[2240],"text":"Any: 2017<br />n: 2240<br />Any: 2017","type":"bar","marker":{"autocolorscale":false,"color":"rgba(163,165,0,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"2017","legendgroup":"2017","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[3],"y":[2304],"text":"Any: 2018<br />n: 2304<br />Any: 2018","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,191,125,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"2018","legendgroup":"2018","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[4],"y":[2475],"text":"Any: 2019<br />n: 2475<br />Any: 2019","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,176,246,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"2019","legendgroup":"2019","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[5],"y":[2393],"text":"Any: 2020<br />n: 2393<br />Any: 2020","type":"bar","marker":{"autocolorscale":false,"color":"rgba(231,107,243,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"2020","legendgroup":"2020","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":40.1826484018265,"l":48.9497716894977},"plot_bgcolor":"rgba(0,0,0,1)","paper_bgcolor":"rgba(0,0,0,1)","font":{"color":"rgba(255,255,255,1)","family":"","size":14.6118721461187},"title":{"text":"Delictes per any","font":{"color":"rgba(255,255,255,1)","family":"","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,5.6],"tickmode":"array","ticktext":["2016","2017","2018","2019","2020"],"tickvals":[1,2,3,4,5],"categoryorder":"array","categoryarray":["2016","2017","2018","2019","2020"],"nticks":null,"ticks":"outside","tickcolor":"rgba(204,204,204,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(178,178,178,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(20,20,20,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Any","font":{"color":"rgba(255,255,255,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-123.75,2598.75],"tickmode":"array","ticktext":["0","500","1000","1500","2000","2500"],"tickvals":[0,500,1000,1500,2000,2500],"categoryorder":"array","categoryarray":["0","500","1000","1500","2000","2500"],"nticks":null,"ticks":"outside","tickcolor":"rgba(204,204,204,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(178,178,178,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(20,20,20,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Nº delictes","font":{"color":"rgba(255,255,255,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(204,204,204,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(0,0,0,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(255,255,255,1)","family":"","size":11.689497716895},"y":0.913385826771654},"annotations":[{"text":"Any","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"10a0c6f915ffb":{"x":{},"y":{},"fill":{},"type":"bar"}},"cur_data":"10a0c6f915ffb","visdat":{"10a0c6f915ffb":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="section-2" class="section level4 unnumbered">
+<h4></h4>
+<p>A continuación exponemos más concretamente las causas y las características de los delitos de cada año:</p>
+</div>
+<div id="section-3" class="section level3">
+<h3>2016</h3>
+<p>En 2016 se cometieron un total de 2.383 delitos, entre los que se destacan los robos (469 casos), delitos que involucran drogas (342), delitos contra la integridad física (294) y contra la libertad a la intimidad (243).</p>
+<p>Apunte: Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o el Estado.</p>
+<p>Si nos centramos en las categorías de los afectados por los delitos, se observa que en 2016 se cometieron un total de 717 delitos contra la integridad, 929 delitos de ofensas a la comunidad y 737 contra el patrimonio.</p>
+<div id="section-4" class="section level4 tabset tabset-pills">
+<h4></h4>
+<div id="delitos-por-tipo" class="section level5">
+<h5>Delitos por tipo</h5>
+<div id="htmlwidget-342b52b4e404a3291236" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-342b52b4e404a3291236">{"x":{"data":[{"orientation":"v","width":0.9,"base":0,"x":[1],"y":[6],"text":"sub_tipus: Al consumidor<br />n:   6<br />sub_tipus: Al consumidor","type":"bar","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Al consumidor","legendgroup":"Al consumidor","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[2],"y":[16],"text":"sub_tipus: Animales<br />n:  16<br />sub_tipus: Animales","type":"bar","marker":{"autocolorscale":false,"color":"rgba(236,130,57,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Animales","legendgroup":"Animales","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[3],"y":[119],"text":"sub_tipus: Armas<br />n: 119<br />sub_tipus: Armas","type":"bar","marker":{"autocolorscale":false,"color":"rgba(219,142,0,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Armas","legendgroup":"Armas","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[4],"y":[216],"text":"sub_tipus: Autoridad<br />n: 216<br />sub_tipus: Autoridad","type":"bar","marker":{"autocolorscale":false,"color":"rgba(199,152,0,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Autoridad","legendgroup":"Autoridad","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[5],"y":[104],"text":"sub_tipus: Comportamientos disidentes<br />n: 104<br />sub_tipus: Comportamientos disidentes","type":"bar","marker":{"autocolorscale":false,"color":"rgba(174,162,0,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Comportamientos disidentes","legendgroup":"Comportamientos disidentes","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[6],"y":[6],"text":"sub_tipus: Daños<br />n:   6<br />sub_tipus: Daños","type":"bar","marker":{"autocolorscale":false,"color":"rgba(143,170,0,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Daños","legendgroup":"Daños","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[7],"y":[342],"text":"sub_tipus: Drogas<br />n: 342<br />sub_tipus: Drogas","type":"bar","marker":{"autocolorscale":false,"color":"rgba(100,178,0,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Drogas","legendgroup":"Drogas","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[8],"y":[120],"text":"sub_tipus: Familia<br />n: 120<br />sub_tipus: Familia","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,184,27,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Familia","legendgroup":"Familia","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[9],"y":[12],"text":"sub_tipus: Fiscalidad<br />n:  12<br />sub_tipus: Fiscalidad","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,189,92,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Fiscalidad","legendgroup":"Fiscalidad","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[10],"y":[294],"text":"sub_tipus: Fisico<br />n: 294<br />sub_tipus: Fisico","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,192,133,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Fisico","legendgroup":"Fisico","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[11],"y":[69],"text":"sub_tipus: Fraude<br />n:  69<br />sub_tipus: Fraude","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,193,167,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Fraude","legendgroup":"Fraude","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[12],"y":[2],"text":"sub_tipus: Homicidios<br />n:   2<br />sub_tipus: Homicidios","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Homicidios","legendgroup":"Homicidios","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[13],"y":[244],"text":"sub_tipus: Libertad intimidad/identidad<br />n: 244<br />sub_tipus: Libertad intimidad/identidad","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,186,222,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Libertad intimidad/identidad","legendgroup":"Libertad intimidad/identidad","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[14],"y":[5],"text":"sub_tipus: Medioambiente<br />n:   5<br />sub_tipus: Medioambiente","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,178,243,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Medioambiente","legendgroup":"Medioambiente","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[15],"y":[1],"text":"sub_tipus: Menores<br />n:   1<br />sub_tipus: Menores","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,166,255,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Menores","legendgroup":"Menores","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[16],"y":[10],"text":"sub_tipus: Otros<br />n:  10<br />sub_tipus: Otros","type":"bar","marker":{"autocolorscale":false,"color":"rgba(124,150,255,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Otros","legendgroup":"Otros","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[17],"y":[166],"text":"sub_tipus: Propiedad privada<br />n: 166<br />sub_tipus: Propiedad privada","type":"bar","marker":{"autocolorscale":false,"color":"rgba(179,133,255,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Propiedad privada","legendgroup":"Propiedad privada","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[18],"y":[31],"text":"sub_tipus: Psicologica<br />n:  31<br />sub_tipus: Psicologica","type":"bar","marker":{"autocolorscale":false,"color":"rgba(216,116,253,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Psicologica","legendgroup":"Psicologica","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[19],"y":[469],"text":"sub_tipus: Robos<br />n: 469<br />sub_tipus: Robos","type":"bar","marker":{"autocolorscale":false,"color":"rgba(239,103,235,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Robos","legendgroup":"Robos","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[20],"y":[42],"text":"sub_tipus: Salud pública<br />n:  42<br />sub_tipus: Salud pública","type":"bar","marker":{"autocolorscale":false,"color":"rgba(253,97,211,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Salud pública","legendgroup":"Salud pública","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[21],"y":[101],"text":"sub_tipus: Seguridad vial<br />n: 101<br />sub_tipus: Seguridad vial","type":"bar","marker":{"autocolorscale":false,"color":"rgba(255,99,182,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Seguridad vial","legendgroup":"Seguridad vial","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[22],"y":[8],"text":"sub_tipus: Sexual<br />n:   8<br />sub_tipus: Sexual","type":"bar","marker":{"autocolorscale":false,"color":"rgba(255,107,148,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Sexual","legendgroup":"Sexual","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":192.146118721461,"l":43.1050228310502},"plot_bgcolor":"rgba(0,0,0,1)","paper_bgcolor":"rgba(0,0,0,1)","font":{"color":"rgba(255,255,255,1)","family":"","size":14.6118721461187},"title":{"text":"Nº delitos cometidos por año y tipo","font":{"color":"rgba(255,255,255,1)","family":"","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,22.6],"tickmode":"array","ticktext":["Al consumidor","Animales","Armas","Autoridad","Comportamientos disidentes","Daños","Drogas","Familia","Fiscalidad","Fisico","Fraude","Homicidios","Libertad intimidad/identidad","Medioambiente","Menores","Otros","Propiedad privada","Psicologica","Robos","Salud pública","Seguridad vial","Sexual"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22],"categoryorder":"array","categoryarray":["Al consumidor","Animales","Armas","Autoridad","Comportamientos disidentes","Daños","Drogas","Familia","Fiscalidad","Fisico","Fraude","Homicidios","Libertad intimidad/identidad","Medioambiente","Menores","Otros","Propiedad privada","Psicologica","Robos","Salud pública","Seguridad vial","Sexual"],"nticks":null,"ticks":"outside","tickcolor":"rgba(204,204,204,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(178,178,178,1)","family":"","size":11.689497716895},"tickangle":-90,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(20,20,20,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Tipo delitos","font":{"color":"rgba(255,255,255,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-23.45,492.45],"tickmode":"array","ticktext":["0","100","200","300","400"],"tickvals":[0,100,200,300,400],"categoryorder":"array","categoryarray":["0","100","200","300","400"],"nticks":null,"ticks":"outside","tickcolor":"rgba(204,204,204,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(178,178,178,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(20,20,20,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Nº delitos","font":{"color":"rgba(255,255,255,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(204,204,204,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(0,0,0,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(255,255,255,1)","family":"","size":11.689497716895},"y":0.913385826771654},"annotations":[{"text":"sub_tipus","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"10a0cbfc30d8":{"x":{},"y":{},"fill":{},"type":"bar"}},"cur_data":"10a0cbfc30d8","visdat":{"10a0cbfc30d8":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="delitos-por-categoría" class="section level5">
+<h5>Delitos por categoría</h5>
+<div id="htmlwidget-4577c2b6d4550bab936c" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4577c2b6d4550bab936c">{"x":{"data":[{"orientation":"v","width":[0.9,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999],"base":[2,0,10,0,0,1,0,8,0,0],"x":[2,8,9,10,12,13,15,16,18,22],"y":[14,120,2,294,2,243,1,2,31,8],"text":["sub_tipus: Animales<br />n:  14<br />tipus_general: Integridad","sub_tipus: Familia<br />n: 120<br />tipus_general: Integridad","sub_tipus: Fiscalidad<br />n:   2<br />tipus_general: Integridad","sub_tipus: Fisico<br />n: 294<br />tipus_general: Integridad","sub_tipus: Homicidios<br />n:   2<br />tipus_general: Integridad","sub_tipus: Libertad intimidad/identidad<br />n: 243<br />tipus_general: Integridad","sub_tipus: Menores<br />n:   1<br />tipus_general: Integridad","sub_tipus: Otros<br />n:   2<br />tipus_general: Integridad","sub_tipus: Psicologica<br />n:  31<br />tipus_general: Integridad","sub_tipus: Sexual<br />n:   8<br />tipus_general: Integridad"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","line":{"width":1.88976377952756,"color":["transparent","transparent","transparent","transparent","transparent","transparent","transparent","transparent","transparent","transparent"]}},"name":"Integridad","legendgroup":"Integridad","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.9,0.9,0.9,0.9,0.9,0.9,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999],"base":[4,0,0,2,3,0,0,3,0,0],"x":[1,2,3,4,5,7,13,16,20,21],"y":[2,2,119,214,101,342,1,5,42,101],"text":["sub_tipus: Al consumidor<br />n:   2<br />tipus_general: Ofensas comunidad","sub_tipus: Animales<br />n:   2<br />tipus_general: Ofensas comunidad","sub_tipus: Armas<br />n: 119<br />tipus_general: Ofensas comunidad","sub_tipus: Autoridad<br />n: 214<br />tipus_general: Ofensas comunidad","sub_tipus: Comportamientos disidentes<br />n: 101<br />tipus_general: Ofensas comunidad","sub_tipus: Drogas<br />n: 342<br />tipus_general: Ofensas comunidad","sub_tipus: Libertad intimidad/identidad<br />n:   1<br />tipus_general: Ofensas comunidad","sub_tipus: Otros<br />n:   5<br />tipus_general: Ofensas comunidad","sub_tipus: Salud pública<br />n:  42<br />tipus_general: Ofensas comunidad","sub_tipus: Seguridad vial<br />n: 101<br />tipus_general: Ofensas comunidad"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,186,56,1)","line":{"width":1.88976377952756,"color":["transparent","transparent","transparent","transparent","transparent","transparent","transparent","transparent","transparent","transparent"]}},"name":"Ofensas comunidad","legendgroup":"Ofensas comunidad","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.9,0.9,0.9,0.9,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999],"base":[0,0,0,0,0,0,0,0,0,0],"x":[1,4,5,6,9,11,14,16,17,19],"y":[4,2,3,6,10,69,5,3,166,469],"text":["sub_tipus: Al consumidor<br />n:   4<br />tipus_general: Patrimonio","sub_tipus: Autoridad<br />n:   2<br />tipus_general: Patrimonio","sub_tipus: Comportamientos disidentes<br />n:   3<br />tipus_general: Patrimonio","sub_tipus: Daños<br />n:   6<br />tipus_general: Patrimonio","sub_tipus: Fiscalidad<br />n:  10<br />tipus_general: Patrimonio","sub_tipus: Fraude<br />n:  69<br />tipus_general: Patrimonio","sub_tipus: Medioambiente<br />n:   5<br />tipus_general: Patrimonio","sub_tipus: Otros<br />n:   3<br />tipus_general: Patrimonio","sub_tipus: Propiedad privada<br />n: 166<br />tipus_general: Patrimonio","sub_tipus: Robos<br />n: 469<br />tipus_general: Patrimonio"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(97,156,255,1)","line":{"width":1.88976377952756,"color":["transparent","transparent","transparent","transparent","transparent","transparent","transparent","transparent","transparent","transparent"]}},"name":"Patrimonio","legendgroup":"Patrimonio","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":192.146118721461,"l":43.1050228310502},"plot_bgcolor":"rgba(0,0,0,1)","paper_bgcolor":"rgba(0,0,0,1)","font":{"color":"rgba(255,255,255,1)","family":"","size":14.6118721461187},"title":{"text":"Nº delitos cometidos por año y tipo","font":{"color":"rgba(255,255,255,1)","family":"","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,22.6],"tickmode":"array","ticktext":["Al consumidor","Animales","Armas","Autoridad","Comportamientos disidentes","Daños","Drogas","Familia","Fiscalidad","Fisico","Fraude","Homicidios","Libertad intimidad/identidad","Medioambiente","Menores","Otros","Propiedad privada","Psicologica","Robos","Salud pública","Seguridad vial","Sexual"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22],"categoryorder":"array","categoryarray":["Al consumidor","Animales","Armas","Autoridad","Comportamientos disidentes","Daños","Drogas","Familia","Fiscalidad","Fisico","Fraude","Homicidios","Libertad intimidad/identidad","Medioambiente","Menores","Otros","Propiedad privada","Psicologica","Robos","Salud pública","Seguridad vial","Sexual"],"nticks":null,"ticks":"outside","tickcolor":"rgba(204,204,204,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(178,178,178,1)","family":"","size":11.689497716895},"tickangle":-90,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(20,20,20,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Tipo delitos","font":{"color":"rgba(255,255,255,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-23.45,492.45],"tickmode":"array","ticktext":["0","100","200","300","400"],"tickvals":[0,100,200,300,400],"categoryorder":"array","categoryarray":["0","100","200","300","400"],"nticks":null,"ticks":"outside","tickcolor":"rgba(204,204,204,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(178,178,178,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(20,20,20,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Nº delitos","font":{"color":"rgba(255,255,255,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(204,204,204,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(0,0,0,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(255,255,255,1)","family":"","size":11.689497716895},"y":0.913385826771654},"annotations":[{"text":"tipus_general","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(255,255,255,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"10a0c47e15d52":{"x":{},"y":{},"fill":{},"type":"bar"}},"cur_data":"10a0c47e15d52","visdat":{"10a0c47e15d52":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="section-5" class="section level4 unnumbered">
+<h4></h4>
+<p>Por lo tanto, podemos concluir que pese a que los robos son el delito más cometido, en su conjunto aquellos que afectan a toda la comunidad como los delitos por consumo de drogas, portación de armas, o vandalismo son los más numerosos.</p>
+</div>
+</div>
+</div>
+<div id="por-barrios" class="section level2">
+<h2>POR BARRIOS</h2>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+---
+title: "Informe delitos"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd("/Users/Mireia/Desktop/delincuenciaMataro")
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+library(ggdark)
+
+source("Scripts/1_Data_preparing.R")
+source("Scripts/2_Diccionario_tipos_delitos.R")
+source("Scripts/3_data_con_diccionarios.R")
+```
+
+###INTRODUCCIÓN
+
+Este informe expone los datos de delincuencia en Mataró desde el año 2016 hasta el 2020 proporcionados por la Generalitat de Catalunya. 
+
+El objetivo principal es exponer de forma clara para los ciudadanos la realidad de la situación que se está viviendo en Mataró ante la ola de inseguridad que acecha a la ciudad y las numerosas quejas de los vecinos. 
+
+
+
+####INDICACIONES PARA EL LECTOR 
+
+Según el interés del lector, los casos se pueden observar por años, por barrios y por tipo de delitos seleccionando las pestañas ‘Por años’, ’Por barrios’ y ‘Por tipo de delito’. 
+
+Los tipos de delito han sido agrupados en categorías para hacer más ameno su entendimiento, pero se pueden ver todos los delitos que recoge la base de datos en la pestaña del anexo.
+
+Los gráficos que componen el informe son interactivos, por lo que se puede seleccionar y deseleccionar los elementos de la leyenda, así como hacer zoom en partes concretas de los gráficos. Para deshacer el zoom, basta con hacer doble click en el gráfico.
+
+#  {.tabset .tabset-pills}
+
+Escoge cómo quieres ver los datos:
+
+##POR AÑOS
+
+En el número de delitos cometidos por años se observa un claro incremento desde 2017, destacándose 2020 como el año con más delitos registrados con diferencia, con 1.282 casos más que el año anterior. 
+
+Aún así, si examinamos más de cerca los delitos registrados, cabe destacarse que hay un tipo de delito que es el causante de esta gran diferencia entre 2020 y el año anterior: "Circular per la via publica excepte suposits rd 463/2020”. Esta ley es la que entró en vigor en marzo de 2020 para declarar el Estado de Alarma y la cuarentena, y en Mataró se pusieron 1.058 denuncias a personas por saltarse la cuarentena injustificadamente. 
+
+Eliminando esta diferencia de casos, el resultado es que en 2020 hubo 224 casos más que en 2019, siguiendo con la tendencia en aumento que se produce desde 2017. 
+
+####  {.tabset .tabset-pills}
+##### Totales
+```{r delitosany, echo=FALSE}
+
+policia_delitos_agreados_any<- policia%>%
+  group_by(Any)%>%
+  tally()%>%
+  ggplot(aes(x= Any, y = n, fill= Any))+
+  geom_bar(position="stack", stat = "identity")+
+  xlab("Any") +
+  ylab("Nº delictes")+
+  ggtitle("Delictes per any")+
+  dark_theme_bw()
+
+ggplotly(policia_delitos_agreados_any)
+```
+
+##### Sin multas confinamiento
+```{r delitosanyfiltered, echo=FALSE}
+
+policia_delitos_agreados_any_filtro<- policia%>%
+  filter(tipus != "Circular via publica excepte suposits rd463/2020" & sub_tipus != "Otros")%>%
+  group_by(Any)%>%
+  tally()%>%
+  ggplot(aes(x= Any, y = n, fill= Any))+
+  geom_bar(position="stack", stat = "identity")+
+  xlab("Any") +
+  ylab("Nº delictes")+
+  ggtitle("Delictes per any")+
+  dark_theme_bw()
+
+ggplotly(policia_delitos_agreados_any_filtro)
+```
+
+####  {-}
+
+A continuación exponemos más concretamente las causas y las características de los delitos de cada año:
+
+### 2016
+
+En 2016 se cometieron un total de 2.383 delitos, entre los que se destacan los robos (469 casos), delitos que involucran drogas (342), delitos contra la integridad física (294) y contra la libertad a la intimidad (243).
+
+Apunte: Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o el Estado.
+
+Si nos centramos en las categorías de los afectados por los delitos, se observa que en 2016 se cometieron un total de 717 delitos contra la integridad, 929 delitos de ofensas a la comunidad y 737 contra el patrimonio.
+
+####  {.tabset .tabset-pills}
+##### Delitos por tipo
+```{r delitossubtipus, echo=FALSE}
+
+delitos_subtipus<-policia%>%
+  filter(Any == 2016) %>%
+  group_by(sub_tipus, Any)%>%
+  tally()%>%
+  ggplot(aes(x=sub_tipus, y= n, fill=sub_tipus))+
+  geom_bar(stat = "identity")+
+  xlab("Tipo delitos")+
+  ylab("Nº delitos")+
+  ggtitle("Nº delitos cometidos por año y tipo")+
+  dark_theme_bw()+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+ggplotly(delitos_subtipus)  
+```
+
+##### Delitos por categoría
+
+```{r delitocategoria, echo=FALSE}
+
+delitos_categoria<-policia%>%
+  filter(Any == 2016) %>%
+  group_by(sub_tipus, Any, tipus_general)%>%
+  tally()%>%
+  ggplot(aes(x=sub_tipus, y= n, fill=tipus_general))+
+  geom_bar(stat = "identity")+
+  xlab("Tipo delitos")+
+  ylab("Nº delitos")+
+  ggtitle("Nº delitos cometidos por año y tipo")+
+  dark_theme_bw()+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+ggplotly(delitos_categoria)  
+```
+
+####  {-}
+
+Por lo tanto, podemos concluir que pese a que los robos son el delito más cometido, en su conjunto aquellos que afectan a toda la comunidad como los delitos por consumo de drogas, portación de armas, o vandalismo son los más numerosos. 
+
+##POR BARRIOS
