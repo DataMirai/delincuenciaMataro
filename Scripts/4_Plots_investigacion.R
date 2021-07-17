@@ -1,6 +1,6 @@
-source("Scripts/Data_preparing.R")
-source("Scripts/diccionario_tipos_delitos.R")
-source("Scripts/data_con_diccionarios.R")
+source("Scripts/1_Data_preparing.R")
+source("Scripts/2_Diccionario_tipos_delitos.R")
+source("Scripts/3_data_con_diccionarios.R")
 
 policia$Any <- as.factor(policia$Any)
 

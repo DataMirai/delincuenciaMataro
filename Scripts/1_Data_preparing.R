@@ -1,7 +1,7 @@
 # Preparacion de librerias ----
 
 if(!require("pacman")){install.packages("pacman")}
-pacman::p_load("tidyverse","readxl", "data.table","RColorBrewer","viridis")
+pacman::p_load("tidyverse","readxl", "data.table","RColorBrewer","viridis", "knitr")
 
 
 # Preparacion de datos ---------------------------------------------------------
