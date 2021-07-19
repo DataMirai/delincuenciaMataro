@@ -4,14 +4,15 @@ title: "Informe delitos"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
 setwd("/Users/Mireia/Desktop/delincuenciaMataro")
+
 library(tidyverse)
 library(ggplot2)
 library(plotly)
 library(ggdark)
 
-source("Scripts/1_Data_preparing.R")
-source("Scripts/2_Diccionario_tipos_delitos.R")
+
 source("Scripts/3_data_con_diccionarios.R")
 ```
 
@@ -130,5 +131,104 @@ ggplotly(delitos_categoria)
 ####  {-}
 
 Por lo tanto, podemos concluir que pese a que los robos son el delito más cometido, en su conjunto aquellos que afectan a toda la comunidad como los delitos por consumo de drogas, portación de armas, o vandalismo son los más numerosos. 
+
+ Barrios en 2016 
+
+En cuanto a los barrios, se observa una tendencia extremista: los barrios con más delincuencia tienen muchos casos, mientras que los barrios con menos delitos tienen considerablemente pocos. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). La distribución de la población de Mataró por barrios se puede ver con más detalle en este estudio realizado por el Ayuntamiento de Mataró en 2020.
+
+En 2016 vemos que Pla d’en Boet se posiciona como el barrio con más delitos (402) mientras que La Llàntia es con diferencia el barrio con menor tasa de delincuencia (20). Aún así, de este gráfico hay que destacar dos puntos: el barrio de Cerdanyola está dividido en parte norte y parte sur, pero al sumar los delitos de ambas partes, el resultado es que Cerdanyola es el barrio con más delitos de toda la ciudad. El segundo punto a destacar es que los datos obtenidos por la Generalitat contienen nombres de barrios sin especificar como “Barri de Mataró”, “Resta del Terme” y “Sense especificar”. Esta sección recoge un total de 394 delitos no clasificados.
+
+Al observar el gráfico llama la atención que el barrio de Rocafonda, siendo uno de los más poblados del municipio, tenga en proporción una tasa tan baja de delitos, por lo que podría considerarse la posibilidad de que algunos de los delitos que no especifican el barrio en el que se han cometido pertenezcan a Rocafonda. 
+
+####  {.tabset .tabset-pills}
+##### Delitos por barrio
+
+```{r delitosbarrio2016, echo=FALSE}
+
+delitosbarrio2016<- policia%>%
+  filter(Any == 2016) %>%
+  group_by(barri)%>%
+  tally()%>%
+  ggplot(aes(x=barri, y= n, fill=barri))+
+  geom_bar(stat = "identity")+
+  xlab("Tipo delitos")+
+  ylab("Nº delitos")+
+  ggtitle("Nº delitos cometidos por año y tipo")+
+  dark_theme_bw()+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+ggplotly(delitosbarrio2016)
+```
+
+####  {-}
+
+Si nos centramos ahora en el tipo de delito que más se ha cometido en cada barrio a lo largo de 2016, se observa que cada barrio tiene una “especialidad”, es decir, hay un tipo de delito que sobresale del resto.
+
+Predominan los robos o los delitos que involucran drogas en la mayoría de barrios, pero también se destacan las agresiones físicas en Cerdanyola y la resistencia o desobediencia a la autoridad en Pla d’en Boet.
+
+```{r delitosubtipussbarrio2016, echo=FALSE, fig.height= 9, out.width= "100%"}
+
+delitosubtipussbarrio2016<- policia%>%
+  filter(Any == 2016) %>%
+  group_by(barri, sub_tipus)%>%
+  tally()%>%
+  ggplot(aes(x=sub_tipus, y= n, fill=sub_tipus))+
+  geom_bar(stat = "identity")+
+  facet_wrap(~barri, ncol = 3)+
+  xlab("Tipo delitos")+
+  ylab("Nº delitos")+
+  ggtitle("Nº delitos cometidos por año y tipo")+
+  dark_theme_bw()+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+ggplotly(delitosubtipussbarrio2016)
+```
+
+Esta información se puede ver con más detalle en la pestaña “Por Barrios”.
+
+ Perfil del delincuente
+
+Si nos fijamos ahora en el perfil de los delincuentes, encontramos que la gran mayoría son hombres (1.911 casos que suponen el 80,33% del total), mientras que las mujeres son las autoras de 468 casos (el 19,67%).
+
+La distribución por edades determina que la mayoría de los delitos son cometidos por personas jóvenes, de entre 17 y 26 años, aunque en el gráfico se destacan notablemente también las personas de 34 años.
+
+En conclusión, podemos determinar que el perfil más común de los delincuentes de Mataró son hombres jóvenes de entre 17 y 30 años.
+
+####  {.tabset .tabset-pills}
+##### Delitos por sexo
+
+```{r delitossexo2016, echo=FALSE}
+
+delitossexo2016<- policia%>%
+  filter(Any == 2016) %>%
+  group_by( sexe, Any)%>%
+  tally()%>%
+  ggplot(aes(x=sexe, y= n, fill=sexe))+
+  geom_bar(stat = "identity")+
+  xlab("Sexo")+
+  ylab("Nº delitos")+
+  ggtitle("Nº delitos cometidos por sexo y año")+
+  dark_theme_bw()
+
+ggplotly(delitossexo2016)
+```
+
+##### Delitos por edad
+
+```{r delitosedad2016, echo=FALSE}
+
+delitosedad2016<- policia%>%
+  filter(Any == 2016 & edat != 999) %>%
+  ggplot(aes(x=edat))+
+  geom_histogram(binwidth = 1)+
+  xlab("Tipo delitos")+
+  ylab("Nº delitos")+
+  ggtitle("Nº delitos cometidos por año y tipo")+
+  dark_theme_bw()
+
+ggplotly(delitosedad2016)
+```
+
+####  {-}
 
 ##POR BARRIOS

@@ -1,5 +1,4 @@
-source("Scripts/1_Data_preparing.R")
-source("Scripts/2_Diccionario_tipos_delitos.R")
+
 source("Scripts/3_data_con_diccionarios.R")
 
 policia$Any <- as.factor(policia$Any)
@@ -61,9 +60,55 @@ policia%>%
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ggplotly(a)  
 
+## 5
+o<- policia%>%
+  filter(Any == 2016) %>%
+  group_by(barri)%>%
+  tally()%>%
+  ggplot(aes(x=barri, y= n, fill=barri))+
+  geom_bar(stat = "identity")+
+  xlab("Tipo delitos")+
+  ylab("Nº delitos")+
+  ggtitle("Nº delitos cometidos por año y tipo")+
+  dark_theme_bw()+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+ggplotly(o)
+## 7
+a<- policia%>%
+  filter(Any == 2016) %>%
+  group_by(barri, sub_tipus)%>%
+  tally()%>%
+  ggplot(aes(x=sub_tipus, y= n, fill=sub_tipus))+
+  geom_bar(stat = "identity")+
+  facet_wrap(~barri)+
+  xlab("Tipo delitos")+
+  ylab("Nº delitos")+
+  ggtitle("Nº delitos cometidos por año y tipo")+
+  dark_theme_bw()+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+ggplotly(a)
 
-policia %>%
-  filter(sub_tipus =="Otros" & Any == 2020) %>%
-  group_by(tipus)%>%
-  tally()
 
+q<- policia%>%
+  #filter(Any == 2016) %>%
+  group_by( sexe, Any)%>%
+  tally()%>%
+  ggplot(aes(x=sexe, y= n, fill=sexe))+
+  geom_bar(stat = "identity")+
+  facet_wrap(~Any)+
+  xlab("Sexo")+
+  ylab("Nº delitos")+
+  ggtitle("Nº delitos cometidos por sexo y año")+
+  dark_theme_bw()
+ggplotly(q)
+
+r<- policia%>%
+  filter(Any == 2016 & edat != 999) %>%
+  ggplot(aes(x=edat))+
+  geom_histogram(binwidth = 1)+
+  xlab("Tipo delitos")+
+  ylab("Nº delitos")+
+  ggtitle("Nº delitos cometidos por año y tipo")+
+  dark_theme_bw()
+
+ggplotly(r)
