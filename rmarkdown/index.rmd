@@ -16,17 +16,13 @@ library(ggdark)
 source("Scripts/3_data_con_diccionarios.R")
 ```
 
-###INTRODUCCIÓN
+### INTRODUCCIÓN
 
 Este informe expone los datos de delincuencia en Mataró desde el año 2016 hasta el 2020 proporcionados por la Generalitat de Catalunya. 
 
 El objetivo principal es exponer de forma clara para los ciudadanos la realidad de la situación que se está viviendo en Mataró ante la ola de inseguridad que acecha a la ciudad y las numerosas quejas de los vecinos. 
 
-<div class="alert alert-info">
-  <strong>Info!</strong> Indicates a neutral informative change or action.
-</div>
-
-####INDICACIONES PARA EL LECTOR 
+#### INDICACIONES PARA EL LECTOR 
 
 <div class="alert alert-info">
 * Según el interés del lector, los casos se pueden observar por años, por barrios y por tipo de delitos seleccionando las pestañas ‘Por años’, ’Por barrios’ y ‘Por tipo de delito’. 
@@ -37,11 +33,10 @@ El objetivo principal es exponer de forma clara para los ciudadanos la realidad 
 </div>
 
 
-#  {.tabset .tabset-pills}
+**Escoge cómo quieres ver los datos:**
 
-Escoge cómo quieres ver los datos:
-
-##POR AÑOS
+# {.tabset .tabset-fade}
+## POR AÑOS {.tabset .tabset-fade}
 
 En el número de delitos cometidos por años se observa un claro incremento desde 2017, destacándose 2020 como el año con más delitos registrados con diferencia, con 1.282 casos más que el año anterior. 
 
@@ -87,11 +82,16 @@ ggplotly(policia_delitos_agreados_any_filtro)
 
 A continuación exponemos más concretamente las causas y las características de los delitos de cada año:
 
+
+**Selecciona año:**
+
 ### 2016
 
 En 2016 se cometieron un total de 2.383 delitos, entre los que se destacan los robos (469 casos), delitos que involucran drogas (342), delitos contra la integridad física (294) y contra la libertad a la intimidad (243).
 
-Apunte: Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o el Estado.
+<div class="alert alert-warning">
+<strong> Apunte: </strong> Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o el Estado.
+</div>
 
 Si nos centramos en las categorías de los afectados por los delitos, se observa que en 2016 se cometieron un total de 717 delitos contra la integridad, 929 delitos de ofensas a la comunidad y 737 contra el patrimonio.
 
@@ -137,7 +137,7 @@ ggplotly(delitos_categoria)
 
 Por lo tanto, podemos concluir que pese a que los robos son el delito más cometido, en su conjunto aquellos que afectan a toda la comunidad como los delitos por consumo de drogas, portación de armas, o vandalismo son los más numerosos. 
 
- Barrios en 2016 
+ **Barrios en 2016**
 
 En cuanto a los barrios, se observa una tendencia extremista: los barrios con más delincuencia tienen muchos casos, mientras que los barrios con menos delitos tienen considerablemente pocos. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). La distribución de la población de Mataró por barrios se puede ver con más detalle en este estudio realizado por el Ayuntamiento de Mataró en 2020.
 
@@ -191,7 +191,7 @@ ggplotly(delitosubtipussbarrio2016)
 
 Esta información se puede ver con más detalle en la pestaña “Por Barrios”.
 
- Perfil del delincuente
+**Perfil del delincuente**
 
 Si nos fijamos ahora en el perfil de los delincuentes, encontramos que la gran mayoría son hombres (1.911 casos que suponen el 80,33% del total), mientras que las mujeres son las autoras de 468 casos (el 19,67%).
 
@@ -240,7 +240,9 @@ ggplotly(delitosedad2016)
 
 En 2017 se cometieron un total de 2.240 delitos, 133 menos que el año anterior. Este año también estan a la cabeza los delitos por robo (403 casos), pero en los delitos contra la integridad física (303) superan a los que involucran drogas (287). 
 
-Apunte: Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o el Estado.
+<div class="alert alert-warning">
+<strong> Apunte: </strong> Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o el Estado.
+</div>
 
 Si nos centramos en las categorías de los afectados por los delitos, los números no son demasiado distintos a los del año anterior, pero sí se observa una ligera bajada en los delitos de ofensas a la comunidad (805) y contra el patrimonio (686), pero un aumento en cuanto a los delitos contra la integridad (750). 
 
@@ -286,7 +288,7 @@ ggplotly(delitos_categoria2017)
 
 Por lo tanto, podemos concluir que pese a que los robos son el delito más cometido, en su conjunto aquellos que afectan a toda la comunidad como los delitos por consumo de drogas, portación de armas, o vandalismo son los más numerosos. 
 
- Barrios en 2017 
+**Barrios en 2017**
 
 En cuanto a los barrios, sigue existiendo la tendencia de que los barrios con más delincuencia tienen muchos casos, mientras que los barrios con menos delitos tienen considerablemente pocos. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). La distribución de la población de Mataró por barrios se puede ver con más detalle en este estudio realizado por el Ayuntamiento de Mataró en 2020.
 
@@ -342,7 +344,7 @@ ggplotly(delitosubtipussbarrio2017)
 
 Esta información se puede ver con más detalle en la pestaña “Por Barrios”.
 
- Perfil del delincuente
+**Perfil del delincuente**
 
 Si nos fijamos ahora en el perfil de los delincuentes, encontramos que la gran mayoría siguen siendo hombres (1.780 casos), mientras que las mujeres son las autoras de 461 casos. Esto supone una proporción de 79,4% de hombres y un 20,6% de mujeres, una diferencia ligeramente más corta que en el año anterior.
 
@@ -389,7 +391,9 @@ ggplotly(delitosedad2017)
 
 En 2018 se notificaron 2.304 delitos, apenas 60 más que el año anterior. Este año también estan a la cabeza los delitos por robo (406 casos) que se mantienen en número respecto al año anterior. Los siguen los delitos por drogas (304), que experimentan un pequeño repunte y vuelven a colocarse en segunda posición, y en tercer lugar se encuentran los delitos contra la integridad física (296) con una ligera disminución respecto a 2017.
 
-Apunte: Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o el Estado.
+<div class="alert alert-warning">
+<strong> Apunte: </strong> Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o el Estado.
+</div>
 
 En cuanto a las categorías de los afectados por los delitos, encontramos que la tendencia cambió bastante. En 2018 predominaron los delitos contra el patrimonio (809) con más de 100 casos más que en 2017. Los delitos de ofensas a la comunidad (788) quedan relevados al segundo puesto con una ligera bajada, seguida por los delitos contra la integridad (711).
 
@@ -435,7 +439,7 @@ ggplotly(delitos_categoria2018)
 
 Por lo tanto, podemos concluir que 2018 se caracteriza por ser un año con una tasa elevada de bandalismo que afectó a la propiedad privada y pública de la ciudad. También hay que destacar el incremento de denuncias por fraude, que aumentó en más de 100 respecto a 2017.
 
- Barrios en 2018 
+**Barrios en 2018**
 
 En cuanto a los barrios, sigue existiendo la tendencia de que los barrios con más delincuencia tienen muchos casos, mientras que los barrios con menos delitos tienen considerablemente pocos. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). La distribución de la población de Mataró por barrios se puede ver con más detalle en este estudio realizado por el Ayuntamiento de Mataró en 2020.
 
@@ -493,7 +497,7 @@ ggplotly(delitosubtipussbarrio2018)
 
 Esta información se puede ver con más detalle en la pestaña “Por Barrios”.
 
- Perfil del delincuente
+**Perfil del delincuente**
 
 Si nos fijamos ahora en el perfil de los delincuentes, encontramos que la gran mayoría siguen siendo hombres (1.822 casos), mientras que las mujeres son las autoras de 487 casos. Esto supone una proporción de 78,9% de hombres y un 21,1% de mujeres, una diferencia ligeramente más corta que en el año anterior.
 
@@ -542,7 +546,9 @@ En 2019 se notificaron 2.475 delitos, un incremento notable de 170 más que en 2
 
 También llama la atención el aumento de delitos de resistencia o desobediencia a la autoridad (un 23,83% más) y contra la propiedad privada (un 65,03% más) respecto a 2018.
 
-Apunte: Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o el Estado.
+<div class="alert alert-warning">
+<strong> Apunte: </strong> Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o el Estado.
+</div>
 
 En cuanto a las categorías de los afectados por los delitos, encontramos que la tendencia cambiante que se produjo el año pasado se acrecenta. Los delitos contra el patrimonio se sitúan en primera posición con 921 casos, 120 más que el año pasado y 220 más que en 2017. Los delitos de ofensas a la comunidad también aumentan bastante, pasando de los 788 casos de 2018 a 845. En cuanto a los delitos contra la integridad (710), no hay ningún cambio respecto al año anterior.
 
@@ -588,7 +594,7 @@ ggplotly(delitos_categoria2019)
 
 Por lo tanto, podemos concluir que 2018 se caracteriza por ser un año con una tasa elevada de bandalismo que afectó a la propiedad privada y pública de la ciudad. También hay que destacar el incremento de denuncias por fraude, que aumentó en más de 100 respecto a 2017.
 
- Barrios en 2019
+**Barrios en 2019**
 
 En cuanto a los barrios, sigue existiendo la tendencia de que los barrios con más delincuencia tienen muchos casos, mientras que los barrios con menos delitos tienen considerablemente pocos. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). La distribución de la población de Mataró por barrios se puede ver con más detalle en este estudio realizado por el Ayuntamiento de Mataró en 2020.
 
@@ -646,7 +652,7 @@ ggplotly(delitosubtipussbarrio2019)
 
 Esta información se puede ver con más detalle en la pestaña “Por Barrios”.
 
- Perfil del delincuente
+**Perfil del delincuente**
 
 Si nos fijamos ahora en el perfil de los delincuentes, encontramos que la gran mayoría siguen siendo hombres (1.822 casos), mientras que las mujeres son las autoras de 487 casos. Esto supone una proporción de 78,9% de hombres y un 21,1% de mujeres, una diferencia ligeramente más corta que en el año anterior.
 
@@ -690,6 +696,7 @@ ggplotly(delitosedad2019)
 ####  {-}
 
 
-##POR BARRIOS
+## POR BARRIOS {.tabset .tabset-fade}
 
-##  {-}
+#  {-}
+

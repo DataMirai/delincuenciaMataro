@@ -3,16 +3,16 @@ output_dir: "."
 navbar:
   title: "Delincuencia Mataró"
   left:
-    - text: "Home"
+    - text: "Informe"
       href: index.html
-    - text: "About Me"
+    - text: "Sobre nosotros"
       href: about.html
   right: 
-  - icon: fa-twitter
-    href: https://twitter.com
-  - icon: fab fa-github
-    href: https://github.com/DataMirai
-  output:
+    - icon: fa-twitter
+      href: https://twitter.com
+    - icon: fab fa-github
+      href: https://github.com/DataMirai
+output:
   html_document:
-  include:
-  after_body: footer.html
+    highlight: espresso
+    
