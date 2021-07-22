@@ -1,5 +1,5 @@
 source("Scripts/1_Data_preparing.R")
-
+Encoding("UFT-8")
 tipos_delitos <- as.character(unique(policia$tipus))
 
 # PROPIEDAD ----------------------------------------------------------------------------------------
