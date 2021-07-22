@@ -1,9 +1,18 @@
-name: "personal-website"
+name: "delincuencia-Mataro"
 output_dir: "."
 navbar:
-  title: "Personal Website"
+  title: "Delincuencia Mataró"
   left:
     - text: "Home"
       href: index.html
     - text: "About Me"
       href: about.html
+  right: 
+  - icon: fa-twitter
+    href: https://twitter.com
+  - icon: fab fa-github
+    href: https://github.com/DataMirai
+  output:
+  html_document:
+  include:
+  after_body: footer.html
