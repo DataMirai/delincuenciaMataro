@@ -12,7 +12,14 @@ navbar:
       href: https://twitter.com
     - icon: fab fa-github
       href: https://github.com/DataMirai
+    - icon: fa-paypal
+      href: https://paypal.me/mireiacamacho 
 output:
   html_document:
-    highlight: espresso
+    css: style.css
+    includes:
+      in_header: 
+      - header.html
+      - hero-image.html
+      after_body: footer.html
     

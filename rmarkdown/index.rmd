@@ -22,7 +22,8 @@ Este informe expone los datos de delincuencia en Mataró desde el año 2016 hast
 
 El objetivo principal es exponer de forma clara para los ciudadanos la realidad de la situación que se está viviendo en Mataró ante la ola de inseguridad que acecha a la ciudad y las numerosas quejas de los vecinos. 
 
-#### INDICACIONES PARA EL LECTOR 
+ 
+### INDICACIONES PARA EL LECTOR
 
 <div class="alert alert-info">
 * Según el interés del lector, los casos se pueden observar por años, por barrios y por tipo de delitos seleccionando las pestañas ‘Por años’, ’Por barrios’ y ‘Por tipo de delito’. 
@@ -189,9 +190,9 @@ delitosubtipussbarrio2016<- policia%>%
 ggplotly(delitosubtipussbarrio2016)
 ```
 
-Esta información se puede ver con más detalle en la pestaña “Por Barrios”.
+Esta información se puede ver con más detalle en la pestaña [“Por Barrios”](#).
 
-**Perfil del delincuente**
+ **Perfil del delincuente**
 
 Si nos fijamos ahora en el perfil de los delincuentes, encontramos que la gran mayoría son hombres (1.911 casos que suponen el 80,33% del total), mientras que las mujeres son las autoras de 468 casos (el 19,67%).
 
