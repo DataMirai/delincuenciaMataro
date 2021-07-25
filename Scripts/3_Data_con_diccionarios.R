@@ -1,5 +1,5 @@
 source("Scripts/2_Diccionario_tipos_delitos.R")
-#encoding("UFT-8")
+Encoding("UFT-8")
 
 ## Categorías generales
 
