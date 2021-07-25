@@ -25,6 +25,14 @@ body {
   margin-bottom: 0.75em;
 }
 
+/* links */
+a { 
+  color: #141c25;
+}
+
+a:hover {
+ color: #141c25; /* darker color when hovering */
+}
 
 /* -----------HERO IMAGE AT TOP OF PAGE -----------*/
 
@@ -133,7 +141,7 @@ a.navbar-brand {
 }
 
 .footer {
-  font-size: 20px;
+  font-size: 15px;
   color: #808080;
   text-align: center;
   width: 90%;
@@ -143,4 +151,10 @@ a.navbar-brand {
 
 .tocify-extend-page {
   height: 0px !important; /* Gets rid of extra space after footer*/
+}
+
+
+.faa {
+  font-size: 10px;
+  float: right;
 }
