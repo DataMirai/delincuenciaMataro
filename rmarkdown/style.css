@@ -31,8 +31,11 @@ a {
 }
 
 a:hover {
- color: #141c25; /* darker color when hovering */
+ color:  #ffffff72; /* darker color when hovering */
 }
+
+a.linkedin {color:#ffffff;}
+
 
 /* -----------HERO IMAGE AT TOP OF PAGE -----------*/
 
@@ -112,6 +115,7 @@ a:hover {
 /*----------------NAVBAR ---------------*/
 .navbar-default {
     background-color: #141c25;
+    margin-bottom: 5px;
     
 }
 
@@ -157,4 +161,56 @@ a.navbar-brand {
 .faa {
   font-size: 10px;
   float: right;
+}
+
+/*---------------- ABOUT US ----------------*/
+
+
+
+.columna {
+  float: left;
+  width: 50%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.contenedor {
+  padding: 0 16px;
+}
+
+.contenedor::after, .fila::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+.btn-theme {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-theme:hover {
+  background-color: #555;
+}
+
+
+@media screen and (max-width: 650px) {
+  .columna {
+    width: 100%;
+    display: block;
+  }
 }

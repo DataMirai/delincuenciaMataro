@@ -239,7 +239,7 @@ ggplotly(delitosedad2016)
 
 
 <div class="faa">
-[<i float= right class="btn btn-light fa fa-arrow-up fa-4x" ></i>](#)
+<a [<i float= right class="btn btn-light fa fa-arrow-up fa-4x" ></i>](#)> </a>
 </div>
 
 ### 2017
