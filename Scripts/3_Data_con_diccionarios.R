@@ -1,6 +1,6 @@
 source("Scripts/2_Diccionario_tipos_delitos.R", encoding = "UTF-8")
 
-## Categorías generales
+## Categor?as generales
 
 policia<- policia %>%
   mutate(tipus = as.character(tipus) ) %>%
@@ -11,7 +11,7 @@ policia<- policia %>%
     tipus %in% transgresiones_altres ~ "Otros"))%>%
   as.data.frame(.)
 
-## Subcategorías
+## Subcategor?as
 policia<- policia %>%
   mutate(tipus = as.character(tipus) ) %>%
   mutate( sub_tipus = case_when(
@@ -21,7 +21,7 @@ policia<- policia %>%
     tipus %in% transgresiones_medioambiente ~ "Medioambiente",
     tipus %in% transgresiones_consumidor ~ "Al consumidor",
     tipus %in% trangresiones_propiedad_privada ~ "Propiedad privada",
-    tipus %in% transgresiones_danos ~ "Daños",
+    tipus %in% transgresiones_danos ~ "DaÃ±os",
     tipus %in% trangresiones_homicidos ~ "Homicidios",
     tipus %in% transgresiones_familia ~"Familia",
     tipus %in% transgresiones_fisico ~ "Fisico",
@@ -35,7 +35,7 @@ policia<- policia %>%
     tipus %in% transgresiones_drogas ~ "Drogas",
     tipus %in% transgresiones_comportamientos_disidentes ~ "Comportamientos disidentes",
     tipus %in% trangresiones_seguridad_vial ~ "Seguridad vial",
-    tipus %in% transgresiones_salud_publica ~ "Salud pública",
+    tipus %in% transgresiones_salud_publica ~ "Salud pÃºblica",
     tipus %in% transgresiones_altres ~ "Otros"))%>%
   as.data.frame(.)
 

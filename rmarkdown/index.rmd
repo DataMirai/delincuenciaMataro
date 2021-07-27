@@ -144,7 +144,9 @@ En cuanto a los barrios, se observa una tendencia extremista: los barrios con m�
 
 En 2016 vemos que Pla d’en Boet se posiciona como el barrio con más delitos (402) mientras que La Llàntia es con diferencia el barrio con menor tasa de delincuencia (20). Aún así, de este gráfico hay que destacar dos puntos: el barrio de Cerdanyola está dividido en parte norte y parte sur, pero al sumar los delitos de ambas partes, el resultado es que Cerdanyola es el barrio con más delitos de toda la ciudad. El segundo punto a destacar es que los datos obtenidos por la Generalitat contienen nombres de barrios sin especificar como “Barri de Mataró”, “Resta del Terme” y “Sense especificar”. Esta sección recoge un total de 394 delitos no clasificados.
 
+<div class="alert alert-warning">
 Al observar el gráfico llama la atención que el barrio de Rocafonda, siendo uno de los más poblados del municipio, tenga en proporción una tasa tan baja de delitos, por lo que podría considerarse la posibilidad de que algunos de los delitos que no especifican el barrio en el que se han cometido pertenezcan a Rocafonda. 
+</div>
 
 ####  {.tabset .tabset-pills}
 ##### Delitos por barrio
@@ -239,7 +241,7 @@ ggplotly(delitosedad2016)
 
 
 <div class="faa">
-<a [<i float= right class="btn btn-light fa fa-arrow-up fa-4x" ></i>](#)> </a>
+[<i float= right class="btn btn-light fa fa-arrow-up fa-4x" ></i>](#)
 </div>
 
 ### 2017
@@ -302,7 +304,9 @@ En 2016 vemos que Pla d’en Boet se posiciona como el barrio con más delitos 3
 
 Otro punto a tener en cuenta es que los datos obtenidos por la Generalitat contienen nombres de barrios sin especificar como “Barri de Mataró”, “Resta del Terme” y “Sense especificar”. Esta sección recoge un total de 195 delitos no clasificados, 200 menos que en 2016.
 
+<div class="alert alert-warning">
 Al observar el gráfico llama la atención que el barrio de Rocafonda, siendo uno de los más poblados del municipio, tenga en proporción una tasa tan baja de delitos, por lo que podría considerarse la posibilidad de que algunos de los delitos que no especifican el barrio en el que se han cometido pertenezcan a Rocafonda. 
+</div>
 
 ####  {.tabset .tabset-pills}
 ##### Delitos por barrio
@@ -459,7 +463,9 @@ En 2018 vemos que el Eixample se posiciona como el barrio con más delitos (354)
 
 Otro punto a tener en cuenta es que los datos obtenidos por la Generalitat contienen nombres de barrios sin especificar como “Barri de Mataró”, “Resta del Terme” y “Sense especificar”. Esta sección recoge un total de 203 delitos no clasificados, una cifra muy parecida a la de 2017.
 
+<div class="alert alert-warning">
 Al observar el gráfico llama la atención que el barrio de Rocafonda, siendo uno de los más poblados del municipio, tenga en proporción una tasa tan baja de delitos, por lo que podría considerarse la posibilidad de que algunos de los delitos que no especifican el barrio en el que se han cometido pertenezcan a Rocafonda. 
+</div>
 
 ####  {.tabset .tabset-pills}
 ##### Delitos por barrio
@@ -618,7 +624,9 @@ En 2018 vemos que el Eixample se posiciona como el barrio con más delitos (354)
 
 Otro punto a tener en cuenta es que los datos obtenidos por la Generalitat contienen nombres de barrios sin especificar como “Barri de Mataró”, “Resta del Terme” y “Sense especificar”. Esta sección recoge un total de 203 delitos no clasificados, una cifra muy parecida a la de 2017.
 
+<div class="alert alert-warning">
 Al observar el gráfico llama la atención que el barrio de Rocafonda, siendo uno de los más poblados del municipio, tenga en proporción una tasa tan baja de delitos, por lo que podría considerarse la posibilidad de que algunos de los delitos que no especifican el barrio en el que se han cometido pertenezcan a Rocafonda. 
+</div>
 
 ####  {.tabset .tabset-pills}
 ##### Delitos por barrio
