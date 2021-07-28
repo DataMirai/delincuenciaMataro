@@ -11,9 +11,11 @@ library(tidyverse)
 library(ggplot2)
 library(plotly)
 library(ggdark)
+library(formattable)
 
+source("Scripts/5_Poblacion_Delitos.R", encoding = "UTF-8")
+source("Scripts/3_data_con_diccionarios.R", encoding = "UTF-8")
 
-source("Scripts/3_data_con_diccionarios.R")
 ```
 
 ### INTRODUCCIÓN
@@ -53,13 +55,11 @@ policia_delitos_agreados_any<- policia%>%
   group_by(Any)%>%
   tally()%>%
   ggplot(aes(x= Any, y = n, fill= Any))+
-  geom_bar(position="stack", stat = "identity")+
-  xlab("Any") +
-  ylab("Nº delictes")+
-  ggtitle("Delictes per any")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", Any, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Año", y= "Nº delitos", title= "Delitos por año", fill = "Año")+
   dark_theme_bw()
 
-ggplotly(policia_delitos_agreados_any)
+ggplotly(policia_delitos_agreados_any, source = "select", tooltip ='text')
 ```
 
 ##### Sin multas confinamiento
@@ -70,13 +70,11 @@ policia_delitos_agreados_any_filtro<- policia%>%
   group_by(Any)%>%
   tally()%>%
   ggplot(aes(x= Any, y = n, fill= Any))+
-  geom_bar(position="stack", stat = "identity")+
-  xlab("Any") +
-  ylab("Nº delictes")+
-  ggtitle("Delictes per any")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", Any, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Año", y= "Nº delitos", title= "Delitos por año (sin multas por confinamiento)", subtitle= "Sin multas por confinamiento", fill = "Año")+
   dark_theme_bw()
 
-ggplotly(policia_delitos_agreados_any_filtro)
+ggplotly(policia_delitos_agreados_any_filtro, source = "select", tooltip ='text')
 ```
 
 ####  {-}
@@ -98,40 +96,37 @@ Si nos centramos en las categorías de los afectados por los delitos, se observa
 
 ####  {.tabset .tabset-pills}
 ##### Delitos por tipo
-```{r delitossubtipus, echo=FALSE}
+```{r delitossubtipus, echo=FALSE, out.width= "100%"}
 
 delitos_subtipus<-policia%>%
   filter(Any == 2016) %>%
   group_by(sub_tipus, Any)%>%
   tally()%>%
   ggplot(aes(x=sub_tipus, y= n, fill=sub_tipus))+
-  geom_bar(stat = "identity")+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por subtipo", fill = "Subtipo")+
   dark_theme_bw()+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  coord_flip()
 
-ggplotly(delitos_subtipus)  
+ggplotly(delitos_subtipus, source = "select", tooltip ='text')   
 ```
+
 
 ##### Delitos por categoría
 
-```{r delitocategoria, echo=FALSE}
+```{r delitocategoria, echo=FALSE, out.width= "100%"}
 
 delitos_categoria<-policia%>%
   filter(Any == 2016) %>%
   group_by(sub_tipus, Any, tipus_general)%>%
   tally()%>%
   ggplot(aes(x=sub_tipus, y= n, fill=tipus_general))+
-  geom_bar(stat = "identity")+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>%s: %s", tipus_general, sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por categoría", fill = "Categorías")+
   dark_theme_bw()+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  coord_flip()
 
-ggplotly(delitos_categoria)  
+ggplotly(delitos_categoria, source = "select", tooltip ='text')     
 ```
 
 ####  {-}
@@ -151,21 +146,19 @@ Al observar el gráfico llama la atención que el barrio de Rocafonda, siendo un
 ####  {.tabset .tabset-pills}
 ##### Delitos por barrio
 
-```{r delitosbarrio2016, echo=FALSE}
+```{r delitosbarrio2016, echo=FALSE, out.width= "100%"}
 
 delitosbarrio2016<- policia%>%
   filter(Any == 2016) %>%
   group_by(barri)%>%
   tally()%>%
   ggplot(aes(x=barri, y= n, fill=barri))+
-  geom_bar(stat = "identity")+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", barri, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Barrio", y= "Nº delitos", title= "Delitos por barrio", fill = "Barrios")+
   dark_theme_bw()+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  coord_flip()
 
-ggplotly(delitosbarrio2016)
+ggplotly(delitosbarrio2016, source = "select", tooltip ='text')
 ```
 
 ####  {-}
@@ -174,22 +167,21 @@ Si nos centramos ahora en el tipo de delito que más se ha cometido en cada barr
 
 Predominan los robos o los delitos que involucran drogas en la mayoría de barrios, pero también se destacan las agresiones físicas en Cerdanyola y la resistencia o desobediencia a la autoridad en Pla d’en Boet.
 
-```{r delitosubtipussbarrio2016, echo=FALSE, fig.height= 9, out.width= "100%"}
+```{r delitosubtipussbarrio2016, echo=FALSE, fig.height= 12, out.width= "100%"}
 
 delitosubtipussbarrio2016<- policia%>%
   filter(Any == 2016) %>%
   group_by(barri, sub_tipus)%>%
   tally()%>%
   ggplot(aes(x=sub_tipus, y= n, fill=sub_tipus))+
-  geom_bar(stat = "identity")+
-  facet_wrap(~barri, ncol = 3)+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>%s: %s", barri, sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  facet_wrap(~barri, ncol=3)+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por subtipo y barrio", fill = "Subtipo")+
   dark_theme_bw()+
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
-ggplotly(delitosubtipussbarrio2016)
+
+ggplotly(delitosubtipussbarrio2016, source = "select", tooltip ='text')
 ```
 
 Esta información se puede ver con más detalle en la pestaña “Por Barrios”.
@@ -205,36 +197,34 @@ En conclusión, podemos determinar que el perfil más común de los delincuentes
 ####  {.tabset .tabset-pills}
 ##### Delitos por sexo
 
-```{r delitossexo2016, echo=FALSE}
+```{r delitossexo2016, echo=FALSE, out.width= "100%"}
 
 delitossexo2016<- policia%>%
   filter(Any == 2016) %>%
   group_by( sexe, Any)%>%
   tally()%>%
   ggplot(aes(x=sexe, y= n, fill=sexe))+
-  geom_bar(stat = "identity")+
-  xlab("Sexo")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por sexo y año")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", sexe, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Sexo", y= "Nº delitos", title= "Delitos por sexo", fill = "Sexo")+
   dark_theme_bw()
 
-ggplotly(delitossexo2016)
+ggplotly(delitossexo2016, source = "select", tooltip ='text')
 ```
 
 ##### Delitos por edad
 
-```{r delitosedad2016, echo=FALSE}
+```{r delitosedad2016, echo=FALSE, out.width= "100%"}
 
 delitosedad2016<- policia%>%
   filter(Any == 2016 & edat != 999) %>%
-  ggplot(aes(x=edat))+
-  geom_histogram(binwidth = 1)+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  group_by(edat)%>%
+  tally()%>%
+  ggplot(aes(x=edat, y=n))+
+   geom_bar(position="stack", stat = "identity", aes(text=sprintf("Edad: %s<br>Delitos: %s", edat, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Edad", y= "Nº delitos", title= "Delitos por edad")+
   dark_theme_bw()
 
-ggplotly(delitosedad2016)
+ggplotly(delitosedad2016, source = "select", tooltip ='text')
 ```
 
 ####  {-}
@@ -256,40 +246,36 @@ Si nos centramos en las categorías de los afectados por los delitos, los númer
 
 ####  {.tabset .tabset-pills}
 ##### Delitos por tipo
-```{r delitossubtipus2017, echo=FALSE}
+```{r delitossubtipus2017, echo=FALSE, out.width= "100%"}
 
 delitos_subtipus2017<-policia%>%
   filter(Any == 2017) %>%
   group_by(sub_tipus, Any)%>%
   tally()%>%
   ggplot(aes(x=sub_tipus, y= n, fill=sub_tipus))+
-  geom_bar(stat = "identity")+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por subtipo", fill = "Subtipo")+
   dark_theme_bw()+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  coord_flip()
 
-ggplotly(delitos_subtipus2017)  
+ggplotly(delitos_subtipus2017, source = "select", tooltip ='text') 
 ```
 
 ##### Delitos por categoría
 
-```{r delitocategoria2017, echo=FALSE}
+```{r delitocategoria2017, echo=FALSE, out.width= "100%"}
 
 delitos_categoria2017<-policia%>%
   filter(Any == 2017) %>%
   group_by(sub_tipus, Any, tipus_general)%>%
   tally()%>%
   ggplot(aes(x=sub_tipus, y= n, fill=tipus_general))+
-  geom_bar(stat = "identity")+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>%s: %s", tipus_general, sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por categoría", fill = "Categorías")+
   dark_theme_bw()+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  coord_flip()
 
-ggplotly(delitos_categoria2017)  
+ggplotly(delitos_categoria2017, source = "select", tooltip ='text')  
 ```
 
 ####  {-}
@@ -311,21 +297,19 @@ Al observar el gráfico llama la atención que el barrio de Rocafonda, siendo un
 ####  {.tabset .tabset-pills}
 ##### Delitos por barrio
 
-```{r delitosbarrio2017, echo=FALSE}
+```{r delitosbarrio2017, echo=FALSE, out.width= "100%"}
 
 delitosbarrio2017<- policia%>%
   filter(Any == 2017) %>%
   group_by(barri)%>%
   tally()%>%
   ggplot(aes(x=barri, y= n, fill=barri))+
-  geom_bar(stat = "identity")+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", barri, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Barrio", y= "Nº delitos", title= "Delitos por barrio", fill = "Barrios")+
   dark_theme_bw()+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  coord_flip()
 
-ggplotly(delitosbarrio2017)
+ggplotly(delitosbarrio2017, source = "select", tooltip ='text')
 ```
 
 ####  {-}
@@ -334,22 +318,21 @@ Si nos centramos ahora en el tipo de delito que más se ha cometido en cada barr
 
 Predominan los robos o los delitos que involucran drogas en la mayoría de barrios, pero también se destacan las agresiones físicas y contra la libertad a la intimidad en Cerdanyola y la resistencia o desobediencia a la autoridad en Pla d’en Boet. Llama la atención también el aumento de robos en el barrio Vista Alegre, pasando de 34 en 2016 a 94 en 2017.
 
-```{r delitosubtipussbarrio2017, echo=FALSE, fig.height= 9, out.width= "100%"}
+```{r delitosubtipussbarrio2017, echo=FALSE, fig.height= 12, out.width= "100%"}
 
 delitosubtipussbarrio2017<- policia%>%
   filter(Any == 2017) %>%
   group_by(barri, sub_tipus)%>%
   tally()%>%
   ggplot(aes(x=sub_tipus, y= n, fill=sub_tipus))+
-  geom_bar(stat = "identity")+
-  facet_wrap(~barri, ncol = 3)+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>%s: %s", barri, sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  facet_wrap(~barri, ncol=3)+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por subtipo y barrio", fill = "Subtipo")+
   dark_theme_bw()+
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
-ggplotly(delitosubtipussbarrio2017)
+
+ggplotly(delitosubtipussbarrio2017, source = "select", tooltip ='text')
 ```
 
 Esta información se puede ver con más detalle en la pestaña “Por Barrios”.
@@ -363,36 +346,34 @@ La distribución por edades es bastante distinta respecto a 2016. Si bien es cie
 ####  {.tabset .tabset-pills}
 ##### Delitos por sexo
 
-```{r delitossexo2017, echo=FALSE}
+```{r delitossexo2017, echo=FALSE, out.width= "100%"}
 
 delitossexo2017<- policia%>%
   filter(Any == 2017) %>%
   group_by( sexe)%>%
   tally()%>%
   ggplot(aes(x=sexe, y= n, fill=sexe))+
-  geom_bar(stat = "identity")+
-  xlab("Sexo")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por sexo y año")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", sexe, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Sexo", y= "Nº delitos", title= "Delitos por sexo", fill = "Sexo")+
   dark_theme_bw()
 
-ggplotly(delitossexo2017)
+ggplotly(delitossexo2017, source = "select", tooltip ='text')
 ```
 
 ##### Delitos por edad
 
-```{r delitosedad2017, echo=FALSE}
+```{r delitosedad2017, echo=FALSE, out.width= "100%"}
 
 delitosedad2017<- policia%>%
   filter(Any == 2017 & edat != 999) %>%
-  ggplot(aes(x=edat))+
-  geom_histogram(binwidth = 1)+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  group_by(edat)%>%
+  tally()%>%
+  ggplot(aes(x=edat, y=n))+
+   geom_bar(position="stack", stat = "identity", aes(text=sprintf("Edad: %s<br>Delitos: %s", edat, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Edad", y= "Nº delitos", title= "Delitos por edad")+
   dark_theme_bw()
 
-ggplotly(delitosedad2017)
+ggplotly(delitosedad2017, source = "select", tooltip ='text')
 ```
 
 ####  {-}
@@ -413,40 +394,36 @@ En cuanto a las categorías de los afectados por los delitos, encontramos que la
 
 ####  {.tabset .tabset-pills}
 ##### Delitos por tipo
-```{r delitossubtipus2018, echo=FALSE}
+```{r delitossubtipus2018, echo=FALSE, out.width= "100%"}
 
 delitos_subtipus2018<-policia%>%
   filter(Any == 2018) %>%
   group_by(sub_tipus, Any)%>%
   tally()%>%
   ggplot(aes(x=sub_tipus, y= n, fill=sub_tipus))+
-  geom_bar(stat = "identity")+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por subtipo", fill = "Subtipo")+
   dark_theme_bw()+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  coord_flip()
 
-ggplotly(delitos_subtipus2018)  
+ggplotly(delitos_subtipus2018, source = "select", tooltip ='text') 
 ```
 
 ##### Delitos por categoría
 
-```{r delitocategoria2018, echo=FALSE}
+```{r delitocategoria2018, echo=FALSE, out.width= "100%"}
 
 delitos_categoria2018<-policia%>%
   filter(Any == 2018) %>%
   group_by(sub_tipus, Any, tipus_general)%>%
   tally()%>%
   ggplot(aes(x=sub_tipus, y= n, fill=tipus_general))+
-  geom_bar(stat = "identity")+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>%s: %s", tipus_general, sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por categoría", fill = "Categorías")+
   dark_theme_bw()+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  coord_flip()
 
-ggplotly(delitos_categoria2018)  
+ggplotly(delitos_categoria2018, source = "select", tooltip ='text')   
 ```
 
 ####  {-}
@@ -470,21 +447,19 @@ Al observar el gráfico llama la atención que el barrio de Rocafonda, siendo un
 ####  {.tabset .tabset-pills}
 ##### Delitos por barrio
 
-```{r delitosbarrio2018, echo=FALSE}
+```{r delitosbarrio2018, echo=FALSE, out.width= "100%"}
 
 delitosbarrio2018<- policia%>%
   filter(Any == 2018) %>%
   group_by(barri)%>%
   tally()%>%
   ggplot(aes(x=barri, y= n, fill=barri))+
-  geom_bar(stat = "identity")+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", barri, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Barrio", y= "Nº delitos", title= "Delitos por barrio", fill = "Barrios")+
   dark_theme_bw()+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  coord_flip()
 
-ggplotly(delitosbarrio2018)
+ggplotly(delitosbarrio2018, source = "select", tooltip ='text')
 ```
 
 ####  {-}
@@ -493,22 +468,21 @@ Si nos centramos ahora en el tipo de delito que más se ha cometido en cada barr
 
 Predominan los robos o los delitos que involucran drogas en la mayoría de barrios, pero también se destacan las agresiones físicas y contra la libertad a la intimidad en Cerdanyola y la resistencia o desobediencia a la autoridad en Pla d’en Boet. Llama la atención también el número de robos en el barrio Vista Alegre, que se mantiene en 93 como el año anterior, pero es una cifra que se ha triplicado desde 2016.
 
-```{r delitosubtipussbarrio2018, echo=FALSE, fig.height= 9, out.width= "100%"}
+```{r delitosubtipussbarrio2018, echo=FALSE, fig.height= 12, out.width= "100%"}
 
 delitosubtipussbarrio2018<- policia%>%
   filter(Any == 2018) %>%
   group_by(barri, sub_tipus)%>%
   tally()%>%
   ggplot(aes(x=sub_tipus, y= n, fill=sub_tipus))+
-  geom_bar(stat = "identity")+
-  facet_wrap(~barri, ncol = 3)+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>%s: %s", barri, sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  facet_wrap(~barri, ncol=3)+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por subtipo y barrio", fill = "Subtipo")+
   dark_theme_bw()+
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
-ggplotly(delitosubtipussbarrio2018)
+
+ggplotly(delitosubtipussbarrio2018, source = "select", tooltip ='text')
 ```
 
 Esta información se puede ver con más detalle en la pestaña “Por Barrios”.
@@ -522,36 +496,34 @@ La distribución por edades es bastante distinta a la de los años anteriores. S
 ####  {.tabset .tabset-pills}
 ##### Delitos por sexo
 
-```{r delitossexo2018, echo=FALSE}
+```{r delitossexo2018, echo=FALSE, out.width= "100%"}
 
 delitossexo2018<- policia%>%
   filter(Any == 2018) %>%
   group_by( sexe)%>%
   tally()%>%
   ggplot(aes(x=sexe, y= n, fill=sexe))+
-  geom_bar(stat = "identity")+
-  xlab("Sexo")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por sexo y año")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", sexe, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Sexo", y= "Nº delitos", title= "Delitos por sexo", fill = "Sexo")+
   dark_theme_bw()
 
-ggplotly(delitossexo2018)
+ggplotly(delitossexo2018, source = "select", tooltip ='text')
 ```
 
 ##### Delitos por edad
 
-```{r delitosedad2018, echo=FALSE}
+```{r delitosedad2018, echo=FALSE, out.width= "100%"}
 
 delitosedad2018<- policia%>%
   filter(Any == 2018 & edat != 999) %>%
-  ggplot(aes(x=edat))+
-  geom_histogram(binwidth = 1)+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+ group_by(edat)%>%
+  tally()%>%
+  ggplot(aes(x=edat, y=n))+
+   geom_bar(position="stack", stat = "identity", aes(text=sprintf("Edad: %s<br>Delitos: %s", edat, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Edad", y= "Nº delitos", title= "Delitos por edad")+
   dark_theme_bw()
 
-ggplotly(delitosedad2018)
+ggplotly(delitosedad2018, source = "select", tooltip ='text')
 ```
 
 ####  {-}
@@ -574,40 +546,36 @@ En cuanto a las categorías de los afectados por los delitos, encontramos que la
 
 ####  {.tabset .tabset-pills}
 ##### Delitos por tipo
-```{r delitossubtipus2019, echo=FALSE}
+```{r delitossubtipus2019, echo=FALSE, out.width= "100%"}
 
 delitos_subtipus2019<-policia%>%
   filter(Any == 2019) %>%
   group_by(sub_tipus, Any)%>%
   tally()%>%
-  ggplot(aes(x=sub_tipus, y= n, fill=sub_tipus))+
-  geom_bar(stat = "identity")+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+ ggplot(aes(x=sub_tipus, y= n, fill=sub_tipus))+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por subtipo", fill = "Subtipo")+
   dark_theme_bw()+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  coord_flip()
 
-ggplotly(delitos_subtipus2019)  
+ggplotly(delitos_subtipus2019, source = "select", tooltip ='text') 
 ```
 
 ##### Delitos por categoría
 
-```{r delitocategoria2019, echo=FALSE}
+```{r delitocategoria2019, echo=FALSE, out.width= "100%"}
 
 delitos_categoria2019<-policia%>%
   filter(Any == 2019 & tipus_general != "Otros") %>%
   group_by(sub_tipus, Any, tipus_general)%>%
   tally()%>%
   ggplot(aes(x=sub_tipus, y= n, fill=tipus_general))+
-  geom_bar(stat = "identity")+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>%s: %s", tipus_general, sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por categoría", fill = "Categorías")+
   dark_theme_bw()+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  coord_flip()
 
-ggplotly(delitos_categoria2019)  
+ggplotly(delitos_categoria2019, source = "select", tooltip ='text')   
 ```
 
 ####  {-}
@@ -631,21 +599,19 @@ Al observar el gráfico llama la atención que el barrio de Rocafonda, siendo un
 ####  {.tabset .tabset-pills}
 ##### Delitos por barrio
 
-```{r delitosbarrio2019, echo=FALSE}
+```{r delitosbarrio2019, echo=FALSE, out.width= "100%"}
 
 delitosbarrio2019<- policia%>%
   filter(Any == 2019) %>%
   group_by(barri)%>%
   tally()%>%
   ggplot(aes(x=barri, y= n, fill=barri))+
-  geom_bar(stat = "identity")+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", barri, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Barrio", y= "Nº delitos", title= "Delitos por barrio", fill = "Barrios")+
   dark_theme_bw()+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  coord_flip()
 
-ggplotly(delitosbarrio2019)
+ggplotly(delitosbarrio2019, source = "select", tooltip ='text')
 ```
 
 ####  {-}
@@ -654,22 +620,21 @@ Si nos centramos ahora en el tipo de delito que más se ha cometido en cada barr
 
 Predominan los robos o los delitos que involucran drogas en la mayoría de barrios, pero también se destacan las agresiones físicas y contra la libertad a la intimidad en Cerdanyola y la resistencia o desobediencia a la autoridad en Pla d’en Boet. Llama la atención también el número de robos en el barrio Vista Alegre, que se mantiene en 93 como el año anterior, pero es una cifra que se ha triplicado desde 2016.
 
-```{r delitosubtipussbarrio2019, echo=FALSE, fig.height= 9, out.width= "100%"}
+```{r delitosubtipussbarrio2019, echo=FALSE, fig.height= 12, out.width= "100%"}
 
 delitosubtipussbarrio2019<- policia%>%
   filter(Any == 2019) %>%
   group_by(barri, sub_tipus)%>%
   tally()%>%
   ggplot(aes(x=sub_tipus, y= n, fill=sub_tipus))+
-  geom_bar(stat = "identity")+
-  facet_wrap(~barri, ncol = 3)+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>%s: %s", barri, sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  facet_wrap(~barri, ncol=3)+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por subtipo y barrio", fill = "Subtipo")+
   dark_theme_bw()+
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
-ggplotly(delitosubtipussbarrio2019)
+
+ggplotly(delitosubtipussbarrio2019, source = "select", tooltip ='text')
 ```
 
 Esta información se puede ver con más detalle en la pestaña “Por Barrios”.
@@ -683,36 +648,34 @@ La distribución por edades es bastante distinta a la de los años anteriores. S
 ####  {.tabset .tabset-pills}
 ##### Delitos por sexo
 
-```{r delitossexo2019, echo=FALSE}
+```{r delitossexo2019, echo=FALSE, out.width= "100%"}
 
 delitossexo2019<- policia%>%
   filter(Any == 2019) %>%
   group_by( sexe)%>%
   tally()%>%
   ggplot(aes(x=sexe, y= n, fill=sexe))+
-  geom_bar(stat = "identity")+
-  xlab("Sexo")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por sexo y año")+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", sexe, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Sexo", y= "Nº delitos", title= "Delitos por sexo", fill = "Sexo")+
   dark_theme_bw()
 
-ggplotly(delitossexo2019)
+ggplotly(delitossexo2019, source = "select", tooltip ='text')
 ```
 
 ##### Delitos por edad
 
-```{r delitosedad2019, echo=FALSE}
+```{r delitosedad2019, echo=FALSE, out.width= "100%"}
 
 delitosedad2019<- policia%>%
   filter(Any == 2019 & edat != 999) %>%
-  ggplot(aes(x=edat))+
-  geom_histogram(binwidth = 1)+
-  xlab("Tipo delitos")+
-  ylab("Nº delitos")+
-  ggtitle("Nº delitos cometidos por año y tipo")+
+  group_by(edat)%>%
+  tally()%>%
+  ggplot(aes(x=edat, y=n))+
+   geom_bar(position="stack", stat = "identity", aes(text=sprintf("Edad: %s<br>Delitos: %s", edat, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Edad", y= "Nº delitos", title= "Delitos por edad")+
   dark_theme_bw()
 
-ggplotly(delitosedad2019)
+ggplotly(delitosedad2019, source = "select", tooltip ='text')
 ```
 
 ####  {-}
