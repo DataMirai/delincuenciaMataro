@@ -28,7 +28,7 @@ El objetivo principal es exponer de forma clara para los ciudadanos la realidad 
 ### INDICACIONES PARA EL LECTOR
 
 <div class="alert alert-info">
-* Según el interés del lector, los casos se pueden observar por años, por barrios y por tipo de delitos seleccionando las pestañas ‘Por años’, ’Por barrios’ y ‘Por tipo de delito’. 
+* Según el interés del lector, los casos se pueden observar por años, por barrios y por tipo de delitos seleccionando las pestañas ‘Por años’ y ’Por barrios’. 
 
 * Los tipos de delito han sido agrupados en categorías para hacer más ameno su entendimiento, pero se pueden ver todos los delitos que recoge la base de datos en la pestaña del anexo.
 
@@ -49,7 +49,7 @@ Eliminando esta diferencia de casos, el resultado es que en 2020 hubo 224 casos 
 
 ####  {.tabset .tabset-pills}
 ##### Totales
-```{r delitosany, echo=FALSE}
+```{r delitosany, echo=FALSE, warning=FALSE, message=FALSE}
 
 policia_delitos_agreados_any<- policia%>%
   group_by(Any)%>%
@@ -63,7 +63,7 @@ ggplotly(policia_delitos_agreados_any, source = "select", tooltip ='text')
 ```
 
 ##### Sin multas confinamiento
-```{r delitosanyfiltered, echo=FALSE}
+```{r delitosanyfiltered, echo=FALSE, warning=FALSE, message=FALSE}
 
 policia_delitos_agreados_any_filtro<- policia%>%
   filter(tipus != "Circular via publica excepte suposits rd463/2020" & sub_tipus != "Otros")%>%
@@ -96,7 +96,7 @@ Si nos centramos en las categorías de los afectados por los delitos, se observa
 
 ####  {.tabset .tabset-pills}
 ##### Delitos por tipo
-```{r delitossubtipus, echo=FALSE, out.width= "100%"}
+```{r delitossubtipus, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitos_subtipus<-policia%>%
   filter(Any == 2016) %>%
@@ -114,7 +114,7 @@ ggplotly(delitos_subtipus, source = "select", tooltip ='text')
 
 ##### Delitos por categoría
 
-```{r delitocategoria, echo=FALSE, out.width= "100%"}
+```{r delitocategoria, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitos_categoria<-policia%>%
   filter(Any == 2016) %>%
@@ -135,7 +135,7 @@ Por lo tanto, podemos concluir que pese a que los robos son el delito más comet
 
  **Barrios en 2016**
 
-En cuanto a los barrios, se observa una tendencia extremista: los barrios con más delincuencia tienen muchos casos, mientras que los barrios con menos delitos tienen considerablemente pocos. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). La distribución de la población de Mataró por barrios se puede ver con más detalle en este estudio realizado por el Ayuntamiento de Mataró en 2020.
+En cuanto a los barrios, se observa una tendencia extremista: los barrios con más población tienen muchos casos de delincuencia, mientras que los barrios con menor población tienen considerablemente menos casos. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). 
 
 En 2016 vemos que Pla d’en Boet se posiciona como el barrio con más delitos (402) mientras que La Llàntia es con diferencia el barrio con menor tasa de delincuencia (20). Aún así, de este gráfico hay que destacar dos puntos: el barrio de Cerdanyola está dividido en parte norte y parte sur, pero al sumar los delitos de ambas partes, el resultado es que Cerdanyola es el barrio con más delitos de toda la ciudad. El segundo punto a destacar es que los datos obtenidos por la Generalitat contienen nombres de barrios sin especificar como “Barri de Mataró”, “Resta del Terme” y “Sense especificar”. Esta sección recoge un total de 394 delitos no clasificados.
 
@@ -146,7 +146,7 @@ Al observar el gráfico llama la atención que el barrio de Rocafonda, siendo un
 ####  {.tabset .tabset-pills}
 ##### Delitos por barrio
 
-```{r delitosbarrio2016, echo=FALSE, out.width= "100%"}
+```{r delitosbarrio2016, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitosbarrio2016<- policia%>%
   filter(Any == 2016) %>%
@@ -167,7 +167,7 @@ Si nos centramos ahora en el tipo de delito que más se ha cometido en cada barr
 
 Predominan los robos o los delitos que involucran drogas en la mayoría de barrios, pero también se destacan las agresiones físicas en Cerdanyola y la resistencia o desobediencia a la autoridad en Pla d’en Boet.
 
-```{r delitosubtipussbarrio2016, echo=FALSE, fig.height= 12, out.width= "100%"}
+```{r delitosubtipussbarrio2016, echo=FALSE, fig.height= 12, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitosubtipussbarrio2016<- policia%>%
   filter(Any == 2016) %>%
@@ -197,7 +197,7 @@ En conclusión, podemos determinar que el perfil más común de los delincuentes
 ####  {.tabset .tabset-pills}
 ##### Delitos por sexo
 
-```{r delitossexo2016, echo=FALSE, out.width= "100%"}
+```{r delitossexo2016, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitossexo2016<- policia%>%
   filter(Any == 2016) %>%
@@ -213,7 +213,7 @@ ggplotly(delitossexo2016, source = "select", tooltip ='text')
 
 ##### Delitos por edad
 
-```{r delitosedad2016, echo=FALSE, out.width= "100%"}
+```{r delitosedad2016, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitosedad2016<- policia%>%
   filter(Any == 2016 & edat != 999) %>%
@@ -246,7 +246,7 @@ Si nos centramos en las categorías de los afectados por los delitos, los númer
 
 ####  {.tabset .tabset-pills}
 ##### Delitos por tipo
-```{r delitossubtipus2017, echo=FALSE, out.width= "100%"}
+```{r delitossubtipus2017, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitos_subtipus2017<-policia%>%
   filter(Any == 2017) %>%
@@ -263,7 +263,7 @@ ggplotly(delitos_subtipus2017, source = "select", tooltip ='text')
 
 ##### Delitos por categoría
 
-```{r delitocategoria2017, echo=FALSE, out.width= "100%"}
+```{r delitocategoria2017, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitos_categoria2017<-policia%>%
   filter(Any == 2017) %>%
@@ -284,7 +284,7 @@ Por lo tanto, podemos concluir que pese a que los robos son el delito más comet
 
 **Barrios en 2017**
 
-En cuanto a los barrios, sigue existiendo la tendencia de que los barrios con más delincuencia tienen muchos casos, mientras que los barrios con menos delitos tienen considerablemente pocos. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). La distribución de la población de Mataró por barrios se puede ver con más detalle en este estudio realizado por el Ayuntamiento de Mataró en 2020.
+En cuanto a los barrios, sigue existiendo la tendencia de que los barrios con más población tienen muchos casos, mientras que los barrios con menos delitos son los que tienen considerablemente menos población. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). 
 
 En 2016 vemos que Pla d’en Boet se posiciona como el barrio con más delitos 380, aunque son menos que el año anterior. La Llàntia sigue siendo el barrio más seguro con sólo 11 delitos registrados. Al juntar los datos registrados de las dos partes de Cerdanyola (Norte y Sur), éste se posiciona como el barrio con más delitos (443), siendo el único que ha aumentado respecto al año anterior. 
 
@@ -297,7 +297,7 @@ Al observar el gráfico llama la atención que el barrio de Rocafonda, siendo un
 ####  {.tabset .tabset-pills}
 ##### Delitos por barrio
 
-```{r delitosbarrio2017, echo=FALSE, out.width= "100%"}
+```{r delitosbarrio2017, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitosbarrio2017<- policia%>%
   filter(Any == 2017) %>%
@@ -318,7 +318,7 @@ Si nos centramos ahora en el tipo de delito que más se ha cometido en cada barr
 
 Predominan los robos o los delitos que involucran drogas en la mayoría de barrios, pero también se destacan las agresiones físicas y contra la libertad a la intimidad en Cerdanyola y la resistencia o desobediencia a la autoridad en Pla d’en Boet. Llama la atención también el aumento de robos en el barrio Vista Alegre, pasando de 34 en 2016 a 94 en 2017.
 
-```{r delitosubtipussbarrio2017, echo=FALSE, fig.height= 12, out.width= "100%"}
+```{r delitosubtipussbarrio2017, echo=FALSE, fig.height= 12, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitosubtipussbarrio2017<- policia%>%
   filter(Any == 2017) %>%
@@ -346,7 +346,7 @@ La distribución por edades es bastante distinta respecto a 2016. Si bien es cie
 ####  {.tabset .tabset-pills}
 ##### Delitos por sexo
 
-```{r delitossexo2017, echo=FALSE, out.width= "100%"}
+```{r delitossexo2017, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitossexo2017<- policia%>%
   filter(Any == 2017) %>%
@@ -362,7 +362,7 @@ ggplotly(delitossexo2017, source = "select", tooltip ='text')
 
 ##### Delitos por edad
 
-```{r delitosedad2017, echo=FALSE, out.width= "100%"}
+```{r delitosedad2017, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitosedad2017<- policia%>%
   filter(Any == 2017 & edat != 999) %>%
@@ -394,7 +394,7 @@ En cuanto a las categorías de los afectados por los delitos, encontramos que la
 
 ####  {.tabset .tabset-pills}
 ##### Delitos por tipo
-```{r delitossubtipus2018, echo=FALSE, out.width= "100%"}
+```{r delitossubtipus2018, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitos_subtipus2018<-policia%>%
   filter(Any == 2018) %>%
@@ -411,7 +411,7 @@ ggplotly(delitos_subtipus2018, source = "select", tooltip ='text')
 
 ##### Delitos por categoría
 
-```{r delitocategoria2018, echo=FALSE, out.width= "100%"}
+```{r delitocategoria2018, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitos_categoria2018<-policia%>%
   filter(Any == 2018) %>%
@@ -432,7 +432,7 @@ Por lo tanto, podemos concluir que 2018 se caracteriza por ser un año con una t
 
 **Barrios en 2018**
 
-En cuanto a los barrios, sigue existiendo la tendencia de que los barrios con más delincuencia tienen muchos casos, mientras que los barrios con menos delitos tienen considerablemente pocos. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). La distribución de la población de Mataró por barrios se puede ver con más detalle en este estudio realizado por el Ayuntamiento de Mataró en 2020.
+En cuanto a los barrios, sigue existiendo la tendencia de que los barrios con más población tienen muchos delitos, mientras que los barrios con menos población tienen considerablemente pocos. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). 
 
 Aún así, en 2018 se ha reducido notablemente las diferencias que existían entre los delitos por barrios, y en prácticamente todos ha aumentado el número de delitos respecto al año anterior.
 
@@ -447,7 +447,7 @@ Al observar el gráfico llama la atención que el barrio de Rocafonda, siendo un
 ####  {.tabset .tabset-pills}
 ##### Delitos por barrio
 
-```{r delitosbarrio2018, echo=FALSE, out.width= "100%"}
+```{r delitosbarrio2018, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitosbarrio2018<- policia%>%
   filter(Any == 2018) %>%
@@ -468,7 +468,7 @@ Si nos centramos ahora en el tipo de delito que más se ha cometido en cada barr
 
 Predominan los robos o los delitos que involucran drogas en la mayoría de barrios, pero también se destacan las agresiones físicas y contra la libertad a la intimidad en Cerdanyola y la resistencia o desobediencia a la autoridad en Pla d’en Boet. Llama la atención también el número de robos en el barrio Vista Alegre, que se mantiene en 93 como el año anterior, pero es una cifra que se ha triplicado desde 2016.
 
-```{r delitosubtipussbarrio2018, echo=FALSE, fig.height= 12, out.width= "100%"}
+```{r delitosubtipussbarrio2018, echo=FALSE, fig.height= 12, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitosubtipussbarrio2018<- policia%>%
   filter(Any == 2018) %>%
@@ -496,7 +496,7 @@ La distribución por edades es bastante distinta a la de los años anteriores. S
 ####  {.tabset .tabset-pills}
 ##### Delitos por sexo
 
-```{r delitossexo2018, echo=FALSE, out.width= "100%"}
+```{r delitossexo2018, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitossexo2018<- policia%>%
   filter(Any == 2018) %>%
@@ -512,7 +512,7 @@ ggplotly(delitossexo2018, source = "select", tooltip ='text')
 
 ##### Delitos por edad
 
-```{r delitosedad2018, echo=FALSE, out.width= "100%"}
+```{r delitosedad2018, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitosedad2018<- policia%>%
   filter(Any == 2018 & edat != 999) %>%
@@ -536,17 +536,17 @@ ggplotly(delitosedad2018, source = "select", tooltip ='text')
 
 En 2019 se notificaron 2.475 delitos, un incremento notable de 170 más que en 2018. Este año también estan a la cabeza los robos, que han aumentado hasta los 472. Los siguen los delitos contra la integridad física (308), que han aumentado ligeramente y han superado a los delitos por drogas (292).
 
-También llama la atención el aumento de delitos de resistencia o desobediencia a la autoridad (un 23,83% más) y contra la propiedad privada (un 65,03% más) respecto a 2018.
+También llama la atención el aumento de delitos de resistencia o desobediencia a la autoridad (un 23,83% más) y contra la propiedad privada (un 65,03% más) respecto a 2018. Aún así, los delitos por fraude se han reducido considerablemente, pasando de 216 en 2018 a 151.
 
 <div class="alert alert-warning">
 <strong> Apunte: </strong> Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o el Estado.
 </div>
 
-En cuanto a las categorías de los afectados por los delitos, encontramos que la tendencia cambiante que se produjo el año pasado se acrecenta. Los delitos contra el patrimonio se sitúan en primera posición con 921 casos, 120 más que el año pasado y 220 más que en 2017. Los delitos de ofensas a la comunidad también aumentan bastante, pasando de los 788 casos de 2018 a 845. En cuanto a los delitos contra la integridad (710), no hay ningún cambio respecto al año anterior.
+En cuanto a las categorías de los afectados por los delitos, encontramos que la tendencia cambiante que se produjo el año pasado se acrecenta. Los delitos contra el patrimonio se sitúan en primera posición con 921 casos, 112 más que el año pasado y 220 más que en 2017. Los delitos de ofensas a la comunidad también aumentan bastante, pasando de los 788 casos de 2018 a 845. En cuanto a los delitos contra la integridad (710), no hay ningún cambio respecto al año anterior.
 
 ####  {.tabset .tabset-pills}
 ##### Delitos por tipo
-```{r delitossubtipus2019, echo=FALSE, out.width= "100%"}
+```{r delitossubtipus2019, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitos_subtipus2019<-policia%>%
   filter(Any == 2019) %>%
@@ -563,7 +563,7 @@ ggplotly(delitos_subtipus2019, source = "select", tooltip ='text')
 
 ##### Delitos por categoría
 
-```{r delitocategoria2019, echo=FALSE, out.width= "100%"}
+```{r delitocategoria2019, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitos_categoria2019<-policia%>%
   filter(Any == 2019 & tipus_general != "Otros") %>%
@@ -580,17 +580,19 @@ ggplotly(delitos_categoria2019, source = "select", tooltip ='text')
 
 ####  {-}
 
-Por lo tanto, podemos concluir que 2018 se caracteriza por ser un año con una tasa elevada de bandalismo que afectó a la propiedad privada y pública de la ciudad. También hay que destacar el incremento de denuncias por fraude, que aumentó en más de 100 respecto a 2017.
+
+En conclusión, en 2019 continúa la tendencia al alza de delitos, con robos, agresiones físicas y delitos por drogas a la cabeza. Además, cabe destacar que continúa la elevada tasa de bandalismo contra el patrimonio privado y público de la ciudad con un aumento de 112 delitos más que en el año anterior. 
 
 **Barrios en 2019**
 
-En cuanto a los barrios, sigue existiendo la tendencia de que los barrios con más delincuencia tienen muchos casos, mientras que los barrios con menos delitos tienen considerablemente pocos. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). La distribución de la población de Mataró por barrios se puede ver con más detalle en este estudio realizado por el Ayuntamiento de Mataró en 2020.
+En cuanto a los barrios, sigue existiendo la tendencia de que los barrios con mayor población tienen más casos que los que tienen menor. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). 
+eixample 412 2019 y 354 2018 y cerdanyola S 303-276 N 221-169
 
-Aún así, en 2018 se ha reducido notablemente las diferencias que existían entre los delitos por barrios, y en prácticamente todos ha aumentado el número de delitos respecto al año anterior.
+La tendencia entre barrios es muy similar a la del año anterior, la mayoría de barrios han experimentado un aumento en la delincuencia, pero de forma muy leve. Los barrios que sí han experimentado un crecimiento considerable son L'Eixample, que ha pasado de tener 354 casos en 2018 a 412 en 2019; y Cerdanyola, que en su conjunto suma 524 delitos, 79 más que el año anterior.
 
-En 2018 vemos que el Eixample se posiciona como el barrio con más delitos (354), quitándole la primera posición a Pla d’en Boet (327), que ha experimentado una considerable reducción respecto a 2017.La Llàntia sigue siendo el barrio con menos delitos, pero ha doblado la cantidad, pasando de 11 en 2017 a 28 este año. Al juntar los datos registrados de las dos partes de Cerdanyola (Norte y Sur), encontramos que sigue siendo el barrio con más delitos de la ciudad (445).
+Esto hace que Cerdanyola siga posicionándose como el barrio con más delincuencia (524), seguido por l'Eixample (412) y Pla d'en Boet (357). Los barrios con menor tasa de delincuencia son La Llàntia (22), y el Centre (63), que coinciden con los barrios menos poblados del municipio.
 
-Otro punto a tener en cuenta es que los datos obtenidos por la Generalitat contienen nombres de barrios sin especificar como “Barri de Mataró”, “Resta del Terme” y “Sense especificar”. Esta sección recoge un total de 203 delitos no clasificados, una cifra muy parecida a la de 2017.
+Otro punto a tener en cuenta es que los datos obtenidos por la Generalitat contienen nombres de barrios sin especificar como “Barri de Mataró” y “Sense especificar”. Esta sección recoge un total de 184 delitos no clasificados, una cifra muy parecida a la de los años anteriores, aunque este año no cuenta con la clasificación "Resta del terme".
 
 <div class="alert alert-warning">
 Al observar el gráfico llama la atención que el barrio de Rocafonda, siendo uno de los más poblados del municipio, tenga en proporción una tasa tan baja de delitos, por lo que podría considerarse la posibilidad de que algunos de los delitos que no especifican el barrio en el que se han cometido pertenezcan a Rocafonda. 
@@ -599,7 +601,7 @@ Al observar el gráfico llama la atención que el barrio de Rocafonda, siendo un
 ####  {.tabset .tabset-pills}
 ##### Delitos por barrio
 
-```{r delitosbarrio2019, echo=FALSE, out.width= "100%"}
+```{r delitosbarrio2019, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitosbarrio2019<- policia%>%
   filter(Any == 2019) %>%
@@ -620,7 +622,7 @@ Si nos centramos ahora en el tipo de delito que más se ha cometido en cada barr
 
 Predominan los robos o los delitos que involucran drogas en la mayoría de barrios, pero también se destacan las agresiones físicas y contra la libertad a la intimidad en Cerdanyola y la resistencia o desobediencia a la autoridad en Pla d’en Boet. Llama la atención también el número de robos en el barrio Vista Alegre, que se mantiene en 93 como el año anterior, pero es una cifra que se ha triplicado desde 2016.
 
-```{r delitosubtipussbarrio2019, echo=FALSE, fig.height= 12, out.width= "100%"}
+```{r delitosubtipussbarrio2019, echo=FALSE, fig.height= 12, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitosubtipussbarrio2019<- policia%>%
   filter(Any == 2019) %>%
@@ -648,7 +650,7 @@ La distribución por edades es bastante distinta a la de los años anteriores. S
 ####  {.tabset .tabset-pills}
 ##### Delitos por sexo
 
-```{r delitossexo2019, echo=FALSE, out.width= "100%"}
+```{r delitossexo2019, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitossexo2019<- policia%>%
   filter(Any == 2019) %>%
@@ -664,7 +666,7 @@ ggplotly(delitossexo2019, source = "select", tooltip ='text')
 
 ##### Delitos por edad
 
-```{r delitosedad2019, echo=FALSE, out.width= "100%"}
+```{r delitosedad2019, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
 
 delitosedad2019<- policia%>%
   filter(Any == 2019 & edat != 999) %>%
