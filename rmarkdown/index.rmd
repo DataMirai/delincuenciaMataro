@@ -28,7 +28,7 @@ El objetivo principal es exponer de forma clara para los ciudadanos la realidad 
 ### INDICACIONES PARA EL LECTOR
 
 <div class="alert alert-info">
-* Según el interés del lector, los casos se pueden observar por años, por barrios y por tipo de delitos seleccionando las pestañas ‘Por años’ y ’Por barrios’. 
+* Según el interés del lector, los casos se pueden observar por años y por barrios, seleccionando las pestañas ‘Por años’ y ’Por barrios’ respectivamente. 
 
 * Los tipos de delito han sido agrupados en categorías para hacer más ameno su entendimiento, pero se pueden ver todos los delitos que recoge la base de datos en la pestaña del anexo.
 
@@ -43,9 +43,9 @@ El objetivo principal es exponer de forma clara para los ciudadanos la realidad 
 
 En el número de delitos cometidos por años se observa un claro incremento desde 2017, destacándose 2020 como el año con más delitos registrados con diferencia, con 1.282 casos más que el año anterior. 
 
-Aún así, si examinamos más de cerca los delitos registrados, cabe destacarse que hay un tipo de delito que es el causante de esta gran diferencia entre 2020 y el año anterior: "Circular per la via publica excepte suposits rd 463/2020”. Esta ley es la que entró en vigor en marzo de 2020 para declarar el Estado de Alarma y la cuarentena, y en Mataró se pusieron 1.058 denuncias a personas por saltarse la cuarentena injustificadamente. 
+Aún así, si examinamos más de cerca los delitos registrados, cabe destacar que hay un tipo de delito que es el causante de esta gran diferencia entre 2020 y el año anterior: "Circular per la via publica excepte suposits rd 463/2020”. Esta ley es la que entró en vigor en marzo de 2020 para declarar el Estado de Alarma y la cuarentena, y en Mataró se pusieron un total de 1.058 denuncias a personas por saltarse la cuarentena injustificadamente. 
 
-Eliminando esta diferencia de casos, el resultado es que en 2020 hubo 224 casos más que en 2019, siguiendo con la tendencia en aumento que se produce desde 2017. 
+Eliminando esta diferencia de casos, el resultado es que en 2020 hubo 84 casos menos que en 2019, lo cual ha roto ligeramente la tendencia que estaba formándose desde 2017. 
 
 ####  {.tabset .tabset-pills}
 ##### Totales
@@ -89,7 +89,7 @@ A continuación exponemos más concretamente las causas y las características d
 En 2016 se cometieron un total de 2.383 delitos, entre los que se destacan los robos (469 casos), delitos que involucran drogas (342), delitos contra la integridad física (294) y contra la libertad a la intimidad (243).
 
 <div class="alert alert-warning">
-<strong> Apunte: </strong> Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o el Estado.
+<strong> Apunte: </strong> Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o del Estado.
 </div>
 
 Si nos centramos en las categorías de los afectados por los delitos, se observa que en 2016 se cometieron un total de 717 delitos contra la integridad, 929 delitos de ofensas a la comunidad y 737 contra el patrimonio.
@@ -236,13 +236,13 @@ ggplotly(delitosedad2016, source = "select", tooltip ='text')
 
 ### 2017
 
-En 2017 se cometieron un total de 2.240 delitos, 133 menos que el año anterior. Este año también estan a la cabeza los delitos por robo (403 casos), pero en los delitos contra la integridad física (303) superan a los que involucran drogas (287). 
+En 2017 se cometieron un total de 2.240 delitos, 133 menos que el año anterior. Este año también estan a la cabeza los delitos por robo (403 casos), pero los delitos contra la integridad física (303) superan a los que involucran drogas (287). 
 
 <div class="alert alert-warning">
-<strong> Apunte: </strong> Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o el Estado.
+<strong> Apunte: </strong> Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o del Estado.
 </div>
 
-Si nos centramos en las categorías de los afectados por los delitos, los números no son demasiado distintos a los del año anterior, pero sí se observa una ligera bajada en los delitos de ofensas a la comunidad (805) y contra el patrimonio (686), pero un aumento en cuanto a los delitos contra la integridad (750). 
+Si nos centramos en las categorías de los afectados por los delitos, los números no son demasiado distintos a los del año anterior, pero se observa una ligera bajada en los delitos de ofensas a la comunidad (805) y contra el patrimonio (686). Aún así, hay un aumento en cuanto a los delitos contra la integridad (750). 
 
 ####  {.tabset .tabset-pills}
 ##### Delitos por tipo
@@ -284,9 +284,9 @@ Por lo tanto, podemos concluir que pese a que los robos son el delito más comet
 
 **Barrios en 2017**
 
-En cuanto a los barrios, sigue existiendo la tendencia de que los barrios con más población tienen muchos casos, mientras que los barrios con menos delitos son los que tienen considerablemente menos población. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). 
+En cuanto a los barrios, sigue existiendo la tendencia de que los barrios con más población tienen muchos más casos, mientras que los barrios con menos delitos son los que tienen considerablemente menos población. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). 
 
-En 2016 vemos que Pla d’en Boet se posiciona como el barrio con más delitos 380, aunque son menos que el año anterior. La Llàntia sigue siendo el barrio más seguro con sólo 11 delitos registrados. Al juntar los datos registrados de las dos partes de Cerdanyola (Norte y Sur), éste se posiciona como el barrio con más delitos (443), siendo el único que ha aumentado respecto al año anterior. 
+En 2016 vemos que Pla d’en Boet se posiciona como el barrio con más delitos, 380, aunque son menos que el año anterior. La Llàntia sigue siendo el barrio más seguro con sólo 11 delitos registrados. Al juntar los datos registrados de las dos partes de Cerdanyola (Norte y Sur), éste se posiciona como el barrio con más delitos (443), siendo el único que ha aumentado respecto al año anterior. 
 
 Otro punto a tener en cuenta es que los datos obtenidos por la Generalitat contienen nombres de barrios sin especificar como “Barri de Mataró”, “Resta del Terme” y “Sense especificar”. Esta sección recoge un total de 195 delitos no clasificados, 200 menos que en 2016.
 
@@ -341,7 +341,7 @@ Esta información se puede ver con más detalle en la pestaña “Por Barrios”
 
 Si nos fijamos ahora en el perfil de los delincuentes, encontramos que la gran mayoría siguen siendo hombres (1.780 casos), mientras que las mujeres son las autoras de 461 casos. Esto supone una proporción de 79,4% de hombres y un 20,6% de mujeres, una diferencia ligeramente más corta que en el año anterior.
 
-La distribución por edades es bastante distinta respecto a 2016. Si bien es cierto que gran parte de los delitos se concentran en la franja de los 18 a los 25 años, entre los 30 y los 39, se observan picos considerables que agrupan numerosos delitos. Entonces, mientras que en 2016 los delitos estaban más concentrados entre la población joven, en 2017 están más repartidos entre todas las franjas de edad.
+La distribución por edades es bastante distinta respecto a 2016. Si bien es cierto que gran parte de los delitos se concentran en la franja de los 18 a los 25 años, entre los 30 y los 39, se observan picos considerables que agrupan numerosos delitos. Entonces, mientras que en 2016 los delitos estaban más concentrados entre la población joven, en 2017 están más repartidos entre una franja de edades más amplia.
 
 ####  {.tabset .tabset-pills}
 ##### Delitos por sexo
@@ -387,7 +387,7 @@ ggplotly(delitosedad2017, source = "select", tooltip ='text')
 En 2018 se notificaron 2.304 delitos, apenas 60 más que el año anterior. Este año también estan a la cabeza los delitos por robo (406 casos) que se mantienen en número respecto al año anterior. Los siguen los delitos por drogas (304), que experimentan un pequeño repunte y vuelven a colocarse en segunda posición, y en tercer lugar se encuentran los delitos contra la integridad física (296) con una ligera disminución respecto a 2017.
 
 <div class="alert alert-warning">
-<strong> Apunte: </strong> Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o el Estado.
+<strong> Apunte: </strong> Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o del Estado.
 </div>
 
 En cuanto a las categorías de los afectados por los delitos, encontramos que la tendencia cambió bastante. En 2018 predominaron los delitos contra el patrimonio (809) con más de 100 casos más que en 2017. Los delitos de ofensas a la comunidad (788) quedan relevados al segundo puesto con una ligera bajada, seguida por los delitos contra la integridad (711).
@@ -489,9 +489,9 @@ Esta información se puede ver con más detalle en la pestaña “Por Barrios”
 
 **Perfil del delincuente**
 
-Si nos fijamos ahora en el perfil de los delincuentes, encontramos que la gran mayoría siguen siendo hombres (1.822 casos), mientras que las mujeres son las autoras de 487 casos. Esto supone una proporción de 78,9% de hombres y un 21,1% de mujeres, una diferencia ligeramente más corta que en el año anterior.
+Si nos fijamos ahora en el perfil de los delincuentes, encontramos que la gran mayoría siguen siendo hombres (1.822 casos), mientras que las mujeres son las autoras de 487 casos. Esto supone una proporción de 78,9% de hombres y un 21,1% de mujeres, una diferencia que va disminuyendo ligeramente respecto a los años anteriores.
 
-La distribución por edades es bastante distinta a la de los años anteriores. Si bien la mayoría de delitos se concentran en la población más jóven, sobresalen picos notables en los 23 y los 29 años. Dicho esto, podemos concluir que la mayoría de delitos se concentran en la franja de entre los 19 y los 36, un grupo más ámplio que en años anteriores.
+La distribución por edades es bastante distinta a la de los años anteriores. Si bien la mayoría de delitos se concentran en la población más jóven, sobresalen picos notables en los 23 y los 29 años. Dicho esto, podemos concluir que la mayoría de delitos se concentran en la franja de entre los 19 y los 36, sin dejar de lado el pico de los 39. Por lo tanto, contamos con una franja más amplia que en años anteriores.
 
 ####  {.tabset .tabset-pills}
 ##### Delitos por sexo
@@ -534,12 +534,12 @@ ggplotly(delitosedad2018, source = "select", tooltip ='text')
 
 ### 2019
 
-En 2019 se notificaron 2.475 delitos, un incremento notable de 170 más que en 2018. Este año también estan a la cabeza los robos, que han aumentado hasta los 472. Los siguen los delitos contra la integridad física (308), que han aumentado ligeramente y han superado a los delitos por drogas (292).
+En 2019 se notificaron 2.475 delitos, un incremento notable de 170 más que en 2018. Este año también estan a la cabeza los robos, que han aumentado hasta los 472 (hubo 406 en 2018). Los siguen los delitos contra la integridad física (308), que han aumentado ligeramente y han superado a los delitos por drogas (292).
 
 También llama la atención el aumento de delitos de resistencia o desobediencia a la autoridad (un 23,83% más) y contra la propiedad privada (un 65,03% más) respecto a 2018. Aún así, los delitos por fraude se han reducido considerablemente, pasando de 216 en 2018 a 151.
 
 <div class="alert alert-warning">
-<strong> Apunte: </strong> Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o el Estado.
+<strong> Apunte: </strong> Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o del Estado.
 </div>
 
 En cuanto a las categorías de los afectados por los delitos, encontramos que la tendencia cambiante que se produjo el año pasado se acrecenta. Los delitos contra el patrimonio se sitúan en primera posición con 921 casos, 112 más que el año pasado y 220 más que en 2017. Los delitos de ofensas a la comunidad también aumentan bastante, pasando de los 788 casos de 2018 a 845. En cuanto a los delitos contra la integridad (710), no hay ningún cambio respecto al año anterior.
@@ -585,8 +585,7 @@ En conclusión, en 2019 continúa la tendencia al alza de delitos, con robos, ag
 
 **Barrios en 2019**
 
-En cuanto a los barrios, sigue existiendo la tendencia de que los barrios con mayor población tienen más casos que los que tienen menor. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). 
-eixample 412 2019 y 354 2018 y cerdanyola S 303-276 N 221-169
+En cuanto a los barrios, sigue existiendo la tendencia de que los barrios con mayor población tienen más casos que los de menor. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). 
 
 La tendencia entre barrios es muy similar a la del año anterior, la mayoría de barrios han experimentado un aumento en la delincuencia, pero de forma muy leve. Los barrios que sí han experimentado un crecimiento considerable son L'Eixample, que ha pasado de tener 354 casos en 2018 a 412 en 2019; y Cerdanyola, que en su conjunto suma 524 delitos, 79 más que el año anterior.
 
@@ -618,9 +617,14 @@ ggplotly(delitosbarrio2019, source = "select", tooltip ='text')
 
 ####  {-}
 
-Si nos centramos ahora en el tipo de delito que más se ha cometido en cada barrio a lo largo de 2018, se observa una tendencia muy similar a las de los años anteriores: cada barrio tiene una “especialidad”, es decir, hay un tipo de delito que sobresale del resto.
+Si nos centramos ahora en el tipo de delito que más se ha cometido en cada barrio a lo largo de 2019, se observa que se diluye la tendencia de "especialidades" en cada barrio. Esta vez no hay un delito que sobresalga notoriamente del resto, a excepción del Eixample y sobretodo Vista Alegre, donde los robos se disparan en comparación con otros delitos y pasando de 93 en 2018 a 118 en 2019. Una cifra alarmante si se compara con los 37 robos que hubo en el barrio en 2016. 
 
-Predominan los robos o los delitos que involucran drogas en la mayoría de barrios, pero también se destacan las agresiones físicas y contra la libertad a la intimidad en Cerdanyola y la resistencia o desobediencia a la autoridad en Pla d’en Boet. Llama la atención también el número de robos en el barrio Vista Alegre, que se mantiene en 93 como el año anterior, pero es una cifra que se ha triplicado desde 2016.
+También llama la atención el aumento de delitos contra la propiedad privada en Cerdanyola Norte, que ha pasado de 20 casos en 2018 a 43 este año. Así como en Cerdanyola Sur, que ha aumentado desde los 24 casos en 2018 hasta los 46.
+
+Además, se ha doblado la cifra de las denuncias por resistencia a la autoridad en el barrio del Eixample pasande de 26 casos en 2018 a 52, así como los robos, que han aumentado de 56 casos hasta los 91. 
+
+Los robos siguen en primera posición como delito más cometido en la mayoría de barrios, pero también se destacan los delitos contra la integridad física, los cuales han adelantado a los que involucran drogas respecto al año anterior.
+
 
 ```{r delitosubtipussbarrio2019, echo=FALSE, fig.height= 12, out.width= "100%", warning=FALSE, message=FALSE}
 
@@ -643,9 +647,9 @@ Esta información se puede ver con más detalle en la pestaña “Por Barrios”
 
 **Perfil del delincuente**
 
-Si nos fijamos ahora en el perfil de los delincuentes, encontramos que la gran mayoría siguen siendo hombres (1.822 casos), mientras que las mujeres son las autoras de 487 casos. Esto supone una proporción de 78,9% de hombres y un 21,1% de mujeres, una diferencia ligeramente más corta que en el año anterior.
+Si nos fijamos ahora en el perfil de los delincuentes, encontramos que la gran mayoría siguen siendo hombres (1.926 casos), mientras que las mujeres son las autoras de 551 casos. Esto supone una proporción de 77,75% de hombres y un 22,25% de mujeres, una diferencia que se va acortando ligeramente a lo largo de los años.
 
-La distribución por edades es bastante distinta a la de los años anteriores. Si bien la mayoría de delitos se concentran en la población más jóven, sobresalen picos notables en los 23 y los 29 años. Dicho esto, podemos concluir que la mayoría de delitos se concentran en la franja de entre los 19 y los 36, un grupo más ámplio que en años anteriores.
+La distribución por edades es cada vez más amplia. En los años anteriores se diferenciaba claramente que eran los más jóvenes los que más delitos cometía. Si bien en 2018 la franja que más delitos cometía se encontraba entre los 19 y los 36 años, en 2019 esta franja se expande desde los 17 años hasta los 40.
 
 ####  {.tabset .tabset-pills}
 ##### Delitos por sexo
@@ -678,6 +682,203 @@ delitosedad2019<- policia%>%
   dark_theme_bw()
 
 ggplotly(delitosedad2019, source = "select", tooltip ='text')
+```
+
+####  {-}
+
+<div class="faa">
+[<i float= right class="btn btn-light fa fa-arrow-up fa-4x" ></i>](#)
+</div>
+
+### 2020
+
+2020 ha sido un año marcado por la pandemia y el confinamiento, y este hecho también se ve reflejado en el número de delitos cometidos. El hecho más destacable ha sido el aumento de denúncias interpuestas a lo largo del año, lo cual dispara las cifras de 2.477 en 2019 a 3.759. Esto se debe a que entre las cifras de 2020 también se encuentran las multas a las personas que se saltaron el confinamiento o los toques de queda durante el año. 
+
+"Circular per la via publica excepte suposits rd 463/2020” es la ley que entró en vigor en marzo de 2020 para declarar el Estado de Alarma y la cuarentena, y en Mataró se pusieron un total de 1.058 denuncias a personas por saltarse la cuarentena injustificadamente. Eliminando dichas multas, la cifra de delitos quedaría en 2.393 casos, 84 casos menos que en 2019, aunque 89 casos por encima de la cifra de 2018.
+
+Dejando de lado las multas del confinamiento, los robos siguen a la cabeza como el delito más cometido (397), aunque se ha experimentado un descenso notable respecto a 2019 (hubo 472) e incluso menos que en 2018 (406). Los siguen los delitos relacionados con resistencia a la autoridad (317), los cuales han experimentado un aumento notable (hubo 239 casos en 2019) que podría estar relacionado con las medidas impuestas por el confinamiento. 
+
+Otros delitos que destacan por su aumento respecto a años anteriores son la categoría 'Otros', compuesta principalmente por la ley 4/2015 para la Seguridad Ciudadana (también conocida como Ley Mordaza) que cuenta con 307 casos que no aparecen en ningún otro año, los delitos relacionados con armas, que han pasado de 89 casos en 2019 a 124 en 2020; y los delitos por fraude, que han aumentado desde los 101 casos el año anterior hasta los 151. 
+
+
+<div class="alert alert-warning">
+<strong> Apunte: </strong> Los delitos que tratamos están clasificados en 3 categorías según los afectados por éste: ‘Integridad’ en caso de que el delito se haya cometido contra la integridad de una persona, ‘Ofensas a la comunidad’ si el delito perjudica directa o indirectamente a un grupo de personas o a la comunidad entera, por ejemplo el consumo de drogas en un lugar público; y por último ‘Patrimonio’ para referirse a los delitos cometidos contra las propiedades de las personas o del Estado.
+</div>
+
+En cuanto a las categorías de los afectados por los delitos, encontramos que tantos los delitos contra la integridad (634) como contra el patrimonio (795) se han visto reducidos considerablemente, con cifras cercanas a los niveles de 2018. Aún así, los delitos de ofensas a la comunidad han experimentado una subida drástica, teniendo en cuenta las multas se cuentan 2.329 casos en total, y sin tenerlas en cuenta la cifra se reduce a los 1.271 casos, 426 casos más de los 845 casos registrados en 2019.
+
+####  {.tabset .tabset-pills}
+##### Delitos por tipo
+```{r delitossubtipus2020, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
+
+delitos_subtipus2020<-policia%>%
+  filter(Any == 2020) %>%
+  group_by(sub_tipus, Any)%>%
+  tally()%>%
+ ggplot(aes(x=sub_tipus, y= n, fill=sub_tipus))+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por subtipo", fill = "Subtipo")+
+  dark_theme_bw()+
+  coord_flip()
+
+ggplotly(delitos_subtipus2020, source = "select", tooltip ='text') 
+```
+
+##### Delitos por tipo (sin multas)
+```{r delitossubtipusmultas2020, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
+
+delitos_subtipusmultas2020<-policia%>%
+  filter(tipus != "Circular via publica excepte suposits rd463/2020" & sub_tipus != "Otros")%>%
+  filter(Any == 2020) %>%
+  group_by(sub_tipus, Any)%>%
+  tally()%>%
+ ggplot(aes(x=sub_tipus, y= n, fill=sub_tipus))+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por subtipo (sin multas)", fill = "Subtipo")+
+  dark_theme_bw()+
+  coord_flip()
+
+ggplotly(delitos_subtipusmultas2020, source = "select", tooltip ='text') 
+
+```
+
+##### Delitos por categoría
+```{r delitocategoria2020, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
+
+delitos_categoria2020<-policia%>%
+  filter(Any == 2020 & tipus_general != "Otros") %>%
+  group_by(sub_tipus, Any, tipus_general)%>%
+  tally()%>%
+  ggplot(aes(x=sub_tipus, y= n, fill=tipus_general))+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>%s: %s", tipus_general, sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por categoría", fill = "Categorías")+
+  dark_theme_bw()+
+  coord_flip()
+
+ggplotly(delitos_categoria2020, source = "select", tooltip ='text')   
+```
+
+##### Delitos por categoría (sin multas)
+```{r delitocategoriamulta2020, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
+
+delitos_categoriamulta2020<-policia%>%
+  filter(tipus != "Circular via publica excepte suposits rd463/2020")%>%
+  filter(Any == 2020 & tipus_general != "Otros") %>%
+  group_by(sub_tipus, Any, tipus_general)%>%
+  tally()%>%
+  ggplot(aes(x=sub_tipus, y= n, fill=tipus_general))+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>%s: %s", tipus_general, sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por categoría (sin multas)", fill = "Categorías")+
+  dark_theme_bw()+
+  coord_flip()
+
+ggplotly(delitos_categoriamulta2020, source = "select", tooltip ='text') 
+
+```
+
+
+####  {-}
+
+
+En conclusión, en 2020 los delitos se han reducido ligeramente, aunque por el momento todo apunta a que el confinamiento ha sido la principal causa de esta ruptura en la tendencia al alza. Los delitos más cometidos siguen siendo los robos, seguidos de delitos relacionados con las drogas y agresiones físicas. Estas últimas han experimentado un repunte importante, aumentando de 231 casos en 2019 a 308. Aún así, delitos como la ley 4/2015 para la Seguridad Ciudadana (también conocida como Ley Mordaza), los relacionados con armas y los casos de fraude han aumentado considerablemente.
+
+
+**Barrios en 2020**
+
+En cuanto a los barrios, sigue existiendo la tendencia de que los barrios con mayor población tienen más casos que los de menor. Esto se debe en parte a la manera en la que está distribuida la población del municipio, puesto que hay mucha diferencia de población entre los barrios más poblados de Mataró (Eixample, Cerdanyola, Rocafonda…) y los menos poblados (La Llàntia, el Centre…). 
+
+La tendencia entre barrios es muy similar a la del año anterior, la mayoría de barrios han experimentado un aumento en la delincuencia, pero de forma muy leve. Los barrios que sí han experimentado un crecimiento considerable son L'Eixample, que ha pasado de tener 354 casos en 2018 a 412 en 2019; y Cerdanyola, que en su conjunto suma 524 delitos, 79 más que el año anterior.
+
+Esto hace que Cerdanyola siga posicionándose como el barrio con más delincuencia (524), seguido por l'Eixample (412) y Pla d'en Boet (357). Los barrios con menor tasa de delincuencia son La Llàntia (22), y el Centre (63), que coinciden con los barrios menos poblados del municipio.
+
+Otro punto a tener en cuenta es que los datos obtenidos por la Generalitat contienen nombres de barrios sin especificar como “Barri de Mataró” y “Sense especificar”. Esta sección recoge un total de 184 delitos no clasificados, una cifra muy parecida a la de los años anteriores, aunque este año no cuenta con la clasificación "Resta del terme".
+
+
+####  {.tabset .tabset-pills}
+##### Delitos por barrio
+
+```{r delitosbarrio2020, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
+
+delitosbarrio2020<- policia%>%
+  filter(Any == 2020) %>%
+  group_by(barri)%>%
+  tally()%>%
+  ggplot(aes(x=barri, y= n, fill=barri))+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", barri, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Barrio", y= "Nº delitos", title= "Delitos por barrio", fill = "Barrios")+
+  dark_theme_bw()+
+  coord_flip()
+
+ggplotly(delitosbarrio2020, source = "select", tooltip ='text')
+```
+
+####  {-}
+
+Si nos centramos ahora en el tipo de delito que más se ha cometido en cada barrio a lo largo de 2019, se observa que se diluye la tendencia de "especialidades" en cada barrio. Esta vez no hay un delito que sobresalga notoriamente del resto, a excepción del Eixample y sobretodo Vista Alegre, donde los robos se disparan en comparación con otros delitos y pasando de 93 en 2018 a 118 en 2019. Una cifra alarmante si se compara con los 37 robos que hubo en el barrio en 2016. 
+
+También llama la atención el aumento de delitos contra la propiedad privada en Cerdanyola Norte, que ha pasado de 20 casos en 2018 a 43 este año. Así como en Cerdanyola Sur, que ha aumentado desde los 24 casos en 2018 hasta los 46.
+
+Además, se ha doblado la cifra de las denuncias por resistencia a la autoridad en el barrio del Eixample pasande de 26 casos en 2018 a 52, así como los robos, que han aumentado de 56 casos hasta los 91. 
+
+Los robos siguen en primera posición como delito más cometido en la mayoría de barrios, pero también se destacan los delitos contra la integridad física, los cuales han adelantado a los que involucran drogas respecto al año anterior.
+
+
+```{r delitosubtipussbarrio2020, echo=FALSE, fig.height= 12, out.width= "100%", warning=FALSE, message=FALSE}
+
+delitosubtipussbarrio2020 <- policia%>%
+  filter(Any == 2020) %>%
+  group_by(barri, sub_tipus)%>%
+  tally()%>%
+  ggplot(aes(x=sub_tipus, y= n, fill=sub_tipus))+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>%s: %s", barri, sub_tipus, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  facet_wrap(~barri, ncol=3)+
+  labs(x= "Subtipo", y= "Nº delitos", title= "Delitos por subtipo y barrio", fill = "Subtipo")+
+  dark_theme_bw()+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+
+ggplotly(delitosubtipussbarrio2020, source = "select", tooltip ='text')
+```
+
+Esta información se puede ver con más detalle en la pestaña “Por Barrios”.
+
+**Perfil del delincuente**
+
+Si nos fijamos ahora en el perfil de los delincuentes, encontramos que la gran mayoría siguen siendo hombres (1.926 casos), mientras que las mujeres son las autoras de 551 casos. Esto supone una proporción de 77,75% de hombres y un 22,25% de mujeres, una diferencia que se va acortando ligeramente a lo largo de los años.
+
+La distribución por edades es cada vez más amplia. En los años anteriores se diferenciaba claramente que eran los más jóvenes los que más delitos cometía. Si bien en 2018 la franja que más delitos cometía se encontraba entre los 19 y los 36 años, en 2019 esta franja se expande desde los 17 años hasta los 40.
+
+####  {.tabset .tabset-pills}
+##### Delitos por sexo
+
+```{r delitossexo2020, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
+
+delitossexo2020 <- policia%>%
+  filter(Any == 2020 & sexe != "SENSE ESPECIFICAR") %>%
+  group_by( sexe)%>%
+  tally()%>%
+  ggplot(aes(x=sexe, y= n, fill=sexe))+
+  geom_bar(position="stack", stat = "identity", aes(text=sprintf("%s<br>Delitos: %s<br>", sexe, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Sexo", y= "Nº delitos", title= "Delitos por sexo", fill = "Sexo")+
+  dark_theme_bw()
+
+ggplotly(delitossexo2020, source = "select", tooltip ='text')
+```
+
+##### Delitos por edad
+
+```{r delitosedad2020, echo=FALSE, out.width= "100%", warning=FALSE, message=FALSE}
+
+delitosedad2020<- policia%>%
+  filter(Any == 2020 & edat != 999) %>%
+  group_by(edat)%>%
+  tally()%>%
+  ggplot(aes(x=edat, y=n))+
+   geom_bar(position="stack", stat = "identity", aes(text=sprintf("Edad: %s<br>Delitos: %s", edat, prettyNum(n, big.mark = ".", decimal.mark=","))))+
+  labs(x= "Edad", y= "Nº delitos", title= "Delitos por edad")+
+  dark_theme_bw()
+
+ggplotly(delitosedad2020, source = "select", tooltip ='text')
 ```
 
 ####  {-}
