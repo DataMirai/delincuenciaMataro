@@ -17,6 +17,7 @@ read_excel_allsheets <- function(filename, tibble = FALSE) {
 policia <- read_excel_allsheets("Data/REF_21900.xls")
 noms<- c("barri","sexe","edat","categoria","tipus","var1","var2","Any")
 
+
 # Creacion Data frame policia -------------------------------------------------------------
 
 policia <- policia %>% 
@@ -26,6 +27,19 @@ policia <- policia %>%
   as.tibble(.) %>%
   select(-c(var1,var2)) %>%
   filter(Any!=2015)
-  
+
+
+policia2021 <- as.tibble(read_excel_allsheets("Data/REF_22970.xls")) %>% 
+  map_df(., set_names, c("barri","sexe","edat","categoria","tipus","var1","var2")) %>%
+  select(-c(var1,var2)) %>%
+  mutate(Any= 2021) %>%
+  as.tibble()
+
+
+ 
+policia <- rbind(policia,policia2021)
+
+policia %>%
+  arrange(desc(Any))
 # Limpieza de variables auxiliares ---------------------------------------------
-rm(noms, read_excel_allsheets )
+rm(noms, read_excel_allsheets,policia2021 )

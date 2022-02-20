@@ -5,8 +5,8 @@ title: ""
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-setwd("/Users/Mireia/Desktop/delincuenciaMataro")
-
+#setwd("/Users/Mireia/Desktop/delincuenciaMataro")
+setwd("C:/Users/Aitor/Desktop/delincuenciaMataro")
 library(tidyverse)
 library(ggplot2)
 library(plotly)
