@@ -1,2 +1,2 @@
 # DelincuenciaMataro
-Shiny de tratamiento de datos de delincuencia de la policía de Mataro
+Informe en el que se analizan los datos de la delincuencia en Mataró entre los años 2016 y 2021 por barrios y perfil de los delincuentes.
